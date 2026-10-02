@@ -7,7 +7,7 @@ export function LegalPage({ title, updated, children }: { title: string; updated
     <>
       <Nav />
       <main className="relative px-5 pb-24 pt-36">
-        <div className="absolute inset-x-0 top-0 h-96 bg-[radial-gradient(ellipse_60%_100%_at_50%_0%,rgba(212,166,74,0.14),transparent)]" />
+        <div className="absolute inset-x-0 top-0 h-96 bg-[radial-gradient(ellipse_60%_100%_at_50%_0%,rgba(201,162,74,0.14),transparent)]" />
         <article className="relative mx-auto max-w-3xl">
           <Link href="/" className="text-sm text-gold-300 hover:underline">
             ← Back to home

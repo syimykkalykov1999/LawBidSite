@@ -10,6 +10,7 @@ const links = [
   { href: "/#how", label: "How it works" },
   { href: "/#features", label: "Features" },
   { href: "/#attorneys", label: "For attorneys" },
+  { href: "/#pricing", label: "Pricing" },
   { href: "/#faq", label: "FAQ" },
 ];
 
@@ -48,7 +49,7 @@ export function Nav() {
         <div className="flex items-center gap-2">
           <a
             href="/#download"
-            className="group relative hidden overflow-hidden rounded-xl bg-gold-400 px-4 py-2 text-sm font-semibold text-ink-950 transition-transform hover:scale-[1.03] sm:inline-flex"
+            className="group relative hidden overflow-hidden rounded-[14px] bg-ivory px-4 py-2 text-sm font-semibold text-ink-950 transition-transform hover:scale-[1.03] sm:inline-flex"
           >
             <span className="relative z-10">Get the app</span>
             <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-700 group-hover:translate-x-full" />

@@ -17,23 +17,31 @@ const faqs = [
   },
   {
     q: "Can I talk to an attorney before hiring?",
-    a: "Yes. You can message attorneys in the in-app chat and call them by voice or video to ask questions before you decide.",
+    a: "Yes. You can message attorneys in the in-app chat, send voice notes and files, and call them in the app to ask questions before you decide.",
   },
   {
     q: "How do I know an attorney is real?",
-    a: "Attorneys create a profile with their license details, experience and qualifications. Verified profiles show a badge, and you can see ratings and their posts before hiring.",
+    a: "Attorneys verify their license and list the states and practice areas they cover. Verified profiles show a badge, and you can read reviews and their posts before hiring.",
   },
   {
     q: "Which areas of law are covered?",
-    a: "Family, criminal, immigration, real estate, business, employment, tax and many more. Attorneys choose the qualifications they practice, so your case reaches the right people.",
+    a: "42 practice categories, from family, criminal and immigration to real estate, business, employment and tax. Attorneys choose the areas and states they cover, so your case reaches the right people.",
   },
   {
     q: "I am an attorney. How do I join?",
-    a: "Download the app, choose “I am an attorney”, and complete your profile with your license and qualifications. Once approved you can start bidding on matching cases.",
+    a: "Licensed attorneys and attorneys' assistants can join. Download the app, choose Attorney (PRO), verify your license and pick your practice areas and states. Then you can start bidding on matching cases.",
+  },
+  {
+    q: "How much does it cost?",
+    a: "Clients use LawBid for free. Attorneys pay $399 per month plus $100 per month for each assistant seat, or $9,590 per year with 6 assistant seats included.",
+  },
+  {
+    q: "Where is LawBid available?",
+    a: "LawBid works with licensed attorneys in the United States. The app is available in English and Russian.",
   },
   {
     q: "Can my assistants use LawBid too?",
-    a: "Yes. Attorneys can add assistants to their team, assign tasks in the planner and follow their activity.",
+    a: "Yes. Attorneys can add assistants to their team, assign tasks in the planner, approve their work and follow their activity.",
   },
   {
     q: "Is LawBid a law firm?",

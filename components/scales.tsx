@@ -29,24 +29,24 @@ export function Scales({ angle, progress }: Props) {
     <svg viewBox="0 0 800 760" className="h-full w-full overflow-visible" aria-hidden="true">
       <defs>
         <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#fbf0d2" />
-          <stop offset="0.35" stopColor="#e2bc6e" />
-          <stop offset="0.7" stopColor="#a87a2c" />
-          <stop offset="1" stopColor="#f1d79e" />
+          <stop offset="0" stopColor="#f7ecc9" />
+          <stop offset="0.35" stopColor="#e3c877" />
+          <stop offset="0.7" stopColor="#b08a2e" />
+          <stop offset="1" stopColor="#e3c877" />
         </linearGradient>
         <linearGradient id="metal-v" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#f6e7c1" />
-          <stop offset="0.5" stopColor="#d4a64a" />
-          <stop offset="1" stopColor="#7d5a20" />
+          <stop offset="0" stopColor="#f1e3b8" />
+          <stop offset="0.5" stopColor="#c9a24a" />
+          <stop offset="1" stopColor="#8e6f26" />
         </linearGradient>
         <radialGradient id="bowl" cx="0.5" cy="0" r="1">
-          <stop offset="0" stopColor="#f6e7c1" stopOpacity="0.9" />
-          <stop offset="0.6" stopColor="#b48632" stopOpacity="0.9" />
-          <stop offset="1" stopColor="#4a3412" />
+          <stop offset="0" stopColor="#f1e3b8" stopOpacity="0.9" />
+          <stop offset="0.6" stopColor="#b08a2e" stopOpacity="0.9" />
+          <stop offset="1" stopColor="#4d3c14" />
         </radialGradient>
         <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
-          <stop offset="0" stopColor="#e2bc6e" stopOpacity="0.55" />
-          <stop offset="1" stopColor="#e2bc6e" stopOpacity="0" />
+          <stop offset="0" stopColor="#e3c877" stopOpacity="0.55" />
+          <stop offset="1" stopColor="#e3c877" stopOpacity="0" />
         </radialGradient>
         <filter id="soft-glow" x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="6" result="b" />
@@ -87,7 +87,7 @@ export function Scales({ angle, progress }: Props) {
         <motion.g initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 1.1, type: "spring", stiffness: 160, damping: 12 }} style={{ originX: "400px", originY: "160px" }}>
           <path d="M400 128 L414 158 L400 172 L386 158 Z" fill="url(#metal)" />
           <circle cx="400" cy="200" r="16" fill="url(#metal)" />
-          <circle cx="400" cy="200" r="6" fill="#0a0f1f" opacity="0.5" />
+          <circle cx="400" cy="200" r="6" fill="#0a1a3f" opacity="0.5" />
         </motion.g>
       </g>
 
@@ -105,25 +105,25 @@ export function Scales({ angle, progress }: Props) {
         <rect x={PIVOT_X - ARM} y="196" width={ARM * 2} height="8" rx="4" fill="url(#metal)" />
         <circle cx={PIVOT_X - ARM} cy="200" r="10" fill="url(#metal)" />
         <circle cx={PIVOT_X + ARM} cy="200" r="10" fill="url(#metal)" />
-        <circle cx={PIVOT_X - 120} cy="200" r="4" fill="#f6e7c1" />
-        <circle cx={PIVOT_X + 120} cy="200" r="4" fill="#f6e7c1" />
+        <circle cx={PIVOT_X - 120} cy="200" r="4" fill="#f1e3b8" />
+        <circle cx={PIVOT_X + 120} cy="200" r="4" fill="#f1e3b8" />
       </motion.g>
 
       {/* Left pan: the client's case file */}
       <g transform={`translate(${PIVOT_X - ARM} ${PIVOT_Y})`}>
         <motion.g style={{ x: leftX, y: leftY }}>
-          <Pan />
+          <Pan label="Law" />
           <motion.g initial={{ opacity: 0, y: -30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.4, duration: 0.8 }}>
             <g transform="translate(-34 92) rotate(-6)">
-              <rect width="68" height="84" rx="6" fill="#f6f2ea" />
+              <rect width="68" height="84" rx="6" fill="#f3efe3" />
               <path d="M48 0 L68 20 L48 20 Z" fill="#d9d2c3" />
-              <rect x="10" y="16" width="30" height="5" rx="2.5" fill="#1c2547" />
-              <rect x="10" y="30" width="48" height="3.5" rx="1.75" fill="#a7afc7" />
-              <rect x="10" y="40" width="44" height="3.5" rx="1.75" fill="#a7afc7" />
-              <rect x="10" y="50" width="48" height="3.5" rx="1.75" fill="#a7afc7" />
-              <rect x="10" y="60" width="30" height="3.5" rx="1.75" fill="#a7afc7" />
-              <circle cx="52" cy="70" r="9" fill="#b48632" />
-              <circle cx="52" cy="70" r="5" fill="none" stroke="#f6e7c1" strokeWidth="1.5" />
+              <rect x="10" y="16" width="30" height="5" rx="2.5" fill="#10255a" />
+              <rect x="10" y="30" width="48" height="3.5" rx="1.75" fill="#9a9aa6" />
+              <rect x="10" y="40" width="44" height="3.5" rx="1.75" fill="#9a9aa6" />
+              <rect x="10" y="50" width="48" height="3.5" rx="1.75" fill="#9a9aa6" />
+              <rect x="10" y="60" width="30" height="3.5" rx="1.75" fill="#9a9aa6" />
+              <circle cx="52" cy="70" r="9" fill="#b08a2e" />
+              <circle cx="52" cy="70" r="5" fill="none" stroke="#f1e3b8" strokeWidth="1.5" />
             </g>
           </motion.g>
         </motion.g>
@@ -132,7 +132,7 @@ export function Scales({ angle, progress }: Props) {
       {/* Right pan: attorneys' bids drop in as coins */}
       <g transform={`translate(${PIVOT_X + ARM} ${PIVOT_Y})`}>
         <motion.g style={{ x: rightX, y: rightY }}>
-          <Pan />
+          <Pan label="Bid" />
           <Coin progress={progress} start={0.16} x={-46} y={152} />
           <Coin progress={progress} start={0.24} x={46} y={152} />
           <Coin progress={progress} start={0.32} x={0} y={150} />
@@ -144,15 +144,18 @@ export function Scales({ angle, progress }: Props) {
   );
 }
 
-function Pan() {
+function Pan({ label }: { label: string }) {
   return (
     <g>
-      <path d="M0 0 L-88 170 M0 0 L88 170" stroke="#e2bc6e" strokeOpacity="0.85" strokeWidth="2" />
-      <path d="M0 0 L0 170" stroke="#e2bc6e" strokeOpacity="0.35" strokeWidth="1.5" />
+      <path d="M0 0 L-88 170 M0 0 L88 170" stroke="#e3c877" strokeOpacity="0.85" strokeWidth="2" />
+      <path d="M0 0 L0 170" stroke="#e3c877" strokeOpacity="0.35" strokeWidth="1.5" />
       <circle cx="0" cy="0" r="6" fill="url(#metal)" />
       <path d="M-100 170 Q0 250 100 170 Z" fill="url(#bowl)" />
       <ellipse cx="0" cy="170" rx="100" ry="9" fill="url(#metal)" />
       <ellipse cx="0" cy="170" rx="92" ry="5" fill="#2a1e0a" opacity="0.55" />
+      <text y="204" textAnchor="middle" fontSize="24" fontWeight="600" fill="#0a1a3f" fillOpacity="0.85" style={{ fontFamily: "var(--font-source-serif), Georgia, serif" }}>
+        {label}
+      </text>
     </g>
   );
 }
@@ -165,8 +168,8 @@ function Coin({ progress, start, x, y }: { progress: MotionValue<number>; start:
   return (
     <motion.g style={{ x, y: cy, opacity }}>
       <motion.g style={{ scaleX }}>
-        <circle r="20" fill="url(#metal)" stroke="#7d5a20" strokeWidth="2" />
-        <circle r="14" fill="none" stroke="#fbf0d2" strokeOpacity="0.7" strokeWidth="1.5" />
+        <circle r="20" fill="url(#metal)" stroke="#8e6f26" strokeWidth="2" />
+        <circle r="14" fill="none" stroke="#f7ecc9" strokeOpacity="0.7" strokeWidth="1.5" />
         <text y="6" textAnchor="middle" fontSize="17" fontWeight="700" fill="#5a3f12" fontFamily="ui-sans-serif, system-ui">
           $
         </text>

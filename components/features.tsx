@@ -8,12 +8,11 @@ import {
   Checks,
   FilmStrip,
   Gavel,
-  LockKey,
+  Star,
   Phone,
   Play,
   SealCheck,
   UsersThree,
-  VideoCamera,
 } from "@phosphor-icons/react";
 import { SectionHeading } from "./section-heading";
 import { SpotlightCard } from "./spotlight-card";
@@ -75,7 +74,7 @@ export function Features() {
 
         {/* Chat */}
         <SpotlightCard className="min-h-[340px] p-7 md:col-span-2" delay={0.1}>
-          <CardText icon={<ChatsCircle size={22} weight="light" />} title="Real-time chat" body="Online status, last seen, read receipts and typing indicators." />
+          <CardText icon={<ChatsCircle size={22} weight="light" />} title="Real-time chat" body="Online status, read receipts, typing indicators, voice notes and files." />
           <div className="mt-6 space-y-2 text-[13px]">
             <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }} className="w-fit rounded-2xl rounded-bl-md bg-white/[0.07] px-3 py-2 text-ivory">
               Documents received.
@@ -93,7 +92,7 @@ export function Features() {
 
         {/* Calls */}
         <SpotlightCard className="min-h-[300px] p-7 md:col-span-2">
-          <CardText icon={<VideoCamera size={22} weight="light" />} title="Voice and video calls" body="Talk face to face with your attorney, right inside the app." />
+          <CardText icon={<Phone size={22} weight="light" />} title="In-app audio calls" body="Call your attorney straight from the chat, right inside the app." />
           <div className="relative mx-auto mt-8 grid h-20 w-20 place-items-center">
             <span className="pulse-ring absolute inset-0 rounded-full border border-gold-400/50" />
             <span className="pulse-ring absolute inset-0 rounded-full border border-gold-400/50 [animation-delay:0.8s]" />
@@ -118,7 +117,7 @@ export function Features() {
               >
                 <motion.span
                   initial={{ backgroundColor: "rgba(0,0,0,0)" }}
-                  whileInView={{ backgroundColor: i === 0 ? "#4fd1a5" : "rgba(0,0,0,0)" }}
+                  whileInView={{ backgroundColor: i === 0 ? "#34c38a" : "rgba(0,0,0,0)" }}
                   transition={{ delay: 0.8 }}
                   className="grid h-4 w-4 place-items-center rounded border border-white/25 text-ink-950"
                 >
@@ -150,7 +149,7 @@ export function Features() {
 
         {/* Alerts */}
         <SpotlightCard className="min-h-[300px] p-7 md:col-span-3">
-          <CardText icon={<BellRinging size={22} weight="light" />} title="Smart case alerts" body="Attorneys only hear about cases in the areas they actually practice." />
+          <CardText icon={<BellRinging size={22} weight="light" />} title="Smart case alerts" body="Attorneys only hear about cases in the practice areas and states they cover." />
           <div className="mt-6 space-y-2">
             {["New case · Immigration", "New case · Family law", "Your bid was accepted 🎉"].map((n, i) => (
               <motion.div
@@ -171,7 +170,7 @@ export function Features() {
 
         {/* Feed */}
         <SpotlightCard className="min-h-[300px] p-7 md:col-span-3" delay={0.1}>
-          <CardText icon={<FilmStrip size={22} weight="light" />} title="Posts, news and reels" body="Attorneys share explainers and short videos, so you can get to know them before you hire." />
+          <CardText icon={<FilmStrip size={22} weight="light" />} title="Posts, legal news and reels" body="Follow attorneys, read their posts and legal news, and get to know them before you hire. Video reels are coming soon." />
           <div className="mt-6 flex gap-3">
             {[
               ["SK", "5 tips before you sign a lease", "from-azure/40"],
@@ -188,17 +187,17 @@ export function Features() {
                 </span>
                 <span className="mb-1.5 grid h-6 w-6 place-items-center rounded-full bg-gradient-to-br from-gold-300 to-gold-600 text-[9px] font-bold text-ink-950">{who}</span>
                 <span className="text-[11px] leading-tight text-ivory">{caption}</span>
-                {i === 0 && <span className="absolute right-2 top-2 rounded-full bg-black/40 px-1.5 py-0.5 text-[9px] text-ivory">0:42</span>}
+                {i === 0 && <span className="absolute right-2 top-2 rounded-full bg-gold-400 px-1.5 py-0.5 text-[9px] font-semibold text-ink-950">Reels soon</span>}
               </motion.div>
             ))}
           </div>
         </SpotlightCard>
 
         <SpotlightCard className="p-7 md:col-span-3">
-          <CardText icon={<SealCheck size={22} weight="light" />} title="Verified attorneys" body="Attorneys build profiles with their license, experience and qualifications. Verified profiles carry the badge." />
+          <CardText icon={<SealCheck size={22} weight="light" />} title="License verification" body="Attorneys verify their license and list the states and practice areas they cover. Verified profiles carry the badge." />
         </SpotlightCard>
         <SpotlightCard className="p-7 md:col-span-3" delay={0.1}>
-          <CardText icon={<LockKey size={22} weight="light" />} title="Private by default" body="Your case, chats and calls stay inside the app, and you decide which attorney you work with." />
+          <CardText icon={<Star size={22} weight="light" />} title="Honest reviews" body="See what past clients say about an attorney before you accept their bid." />
         </SpotlightCard>
       </div>
     </section>

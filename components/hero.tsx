@@ -72,7 +72,7 @@ export function Hero() {
     >
       <div className="grain sticky top-0 h-svh overflow-hidden">
         {/* Background */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,#1c2547_0%,#0a0f1f_45%,#05070f_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,#10255a_0%,#0a1a3f_45%,#0b0b0d_100%)]" />
         <div className="grid-lines absolute inset-0" />
         <motion.div
           className="absolute left-1/2 top-[38%] h-[70vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold-500/20 blur-[120px]"

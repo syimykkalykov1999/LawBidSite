@@ -9,13 +9,13 @@ import {
   House,
   MagnifyingGlass,
   PaperPlaneRight,
+  Play,
   Phone as PhoneIcon,
   Plus,
   SealCheck,
   Star,
   User,
   UsersThree,
-  VideoCamera,
 } from "@phosphor-icons/react";
 
 export type ScreenId =
@@ -31,7 +31,7 @@ export type ScreenId =
 export function Phone({ screen, className = "" }: { screen: ScreenId; className?: string }) {
   return (
     <div
-      className={`relative aspect-[9/19] w-[280px] rounded-[46px] border border-white/15 bg-gradient-to-b from-ink-700 to-ink-900 p-[10px] shadow-[0_40px_120px_-30px_rgba(226,188,110,0.35),inset_0_0_0_1px_rgba(255,255,255,0.05)] ${className}`}
+      className={`relative aspect-[9/19] w-[280px] rounded-[46px] border border-white/15 bg-gradient-to-b from-ink-700 to-ink-900 p-[10px] shadow-[0_40px_120px_-30px_rgba(201,162,74,0.35),inset_0_0_0_1px_rgba(255,255,255,0.05)] ${className}`}
     >
       <div className="relative h-full w-full overflow-hidden rounded-[37px] bg-ink-950">
         <div className="absolute left-1/2 top-2.5 z-30 h-6 w-24 -translate-x-1/2 rounded-full bg-black" />
@@ -127,7 +127,7 @@ function Screen({ id }: { id: ScreenId }) {
           <motion.div
             animate={{ scale: [1, 1.03, 1] }}
             transition={{ repeat: Infinity, duration: 2 }}
-            className="rounded-2xl bg-gold-400 py-3 text-center text-[13px] font-semibold text-ink-950"
+            className="rounded-[14px] bg-ivory py-3 text-center text-[13px] font-semibold text-ink-950"
           >
             Publish case
           </motion.div>
@@ -200,8 +200,8 @@ function Screen({ id }: { id: ScreenId }) {
             </div>
           </div>
           <div className="flex gap-2">
-            <div className="flex-1 rounded-2xl border border-white/10 py-2.5 text-[12px] text-ivory">Message</div>
-            <div className="flex-1 rounded-2xl bg-gold-400 py-2.5 text-[12px] font-semibold text-ink-950">Hire · $520</div>
+            <div className="flex-1 rounded-[14px] border border-white/10 py-2.5 text-[12px] text-ivory">Message</div>
+            <div className="flex-1 rounded-[14px] bg-ivory py-2.5 text-[12px] font-semibold text-ink-950">Hire · $520</div>
           </div>
         </div>
       );
@@ -217,7 +217,6 @@ function Screen({ id }: { id: ScreenId }) {
               </div>
             </div>
             <PhoneIcon size={18} className="text-gold-300" />
-            <VideoCamera size={18} className="text-gold-300" />
           </div>
           <div className="flex flex-1 flex-col gap-2 text-[12px]">
             <div className="max-w-[80%] self-start rounded-2xl rounded-bl-md bg-white/[0.06] px-3 py-2 text-ivory">
@@ -229,8 +228,16 @@ function Screen({ id }: { id: ScreenId }) {
                 <Checks size={13} weight="bold" />
               </span>
             </div>
-            <div className="max-w-[80%] self-start rounded-2xl rounded-bl-md bg-white/[0.06] px-3 py-2 text-ivory">
-              I added the hearing to your planner 📅
+            <div className="flex w-[78%] items-center gap-2 self-start rounded-2xl rounded-bl-md bg-white/[0.06] px-3 py-2">
+              <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-gold-400 text-ink-950">
+                <Play size={10} weight="fill" />
+              </span>
+              <span className="flex h-5 flex-1 items-center gap-[2px]">
+                {[4, 9, 14, 7, 12, 18, 10, 6, 13, 16, 8, 5, 11, 15, 9, 6, 12, 7].map((h, i) => (
+                  <span key={i} className="w-[2px] rounded-full bg-mist/70" style={{ height: h }} />
+                ))}
+              </span>
+              <span className="text-[10px] text-mist">0:14</span>
             </div>
             <div className="flex items-center gap-1 self-start rounded-2xl bg-white/[0.06] px-3 py-2.5">
               <span className="typing-dot h-1.5 w-1.5 rounded-full bg-mist" />
@@ -274,12 +281,12 @@ function Screen({ id }: { id: ScreenId }) {
             </div>
           </div>
           <div className={`${card} mb-4`}>
-            <div className="text-[10px] text-mist">Bar license</div>
+            <div className="text-[10px] text-mist">License · California</div>
             <div className="flex items-center justify-between text-[13px] text-ivory">
-              License #A-20418 <SealCheck size={16} weight="fill" className="text-azure" />
+              CA State Bar #284190 <SealCheck size={16} weight="fill" className="text-azure" />
             </div>
           </div>
-          <div className="rounded-2xl bg-gold-400 py-3 text-center text-[13px] font-semibold text-ink-950">Submit for review</div>
+          <div className="rounded-[14px] bg-ivory py-3 text-center text-[13px] font-semibold text-ink-950">Submit for review</div>
         </div>
       );
     case "feed":
@@ -334,7 +341,7 @@ function Screen({ id }: { id: ScreenId }) {
             <div className="mb-3 rounded-xl bg-white/[0.04] p-2 text-[11px] text-mist">
               I will review the draft, negotiate terms and attend mediation.
             </div>
-            <div className="rounded-2xl bg-gold-400 py-3 text-center text-[13px] font-semibold text-ink-950">Send bid</div>
+            <div className="rounded-[14px] bg-ivory py-3 text-center text-[13px] font-semibold text-ink-950">Send bid</div>
           </div>
         </div>
       );

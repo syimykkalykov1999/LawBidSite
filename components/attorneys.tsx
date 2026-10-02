@@ -16,9 +16,9 @@ import {
 import { SectionHeading } from "./section-heading";
 
 const perks = [
-  "Cases arrive filtered by the qualifications you practice",
+  "Clients in your practice areas and states",
   "You set your own fee in every bid",
-  "Planner, tasks and assistants built in",
+  "Planner, tasks and approvals for your assistants",
   "Posts and videos that grow your reputation",
   "Chat and calls with clients in one place",
 ];
@@ -35,7 +35,7 @@ const orbit = [
 export function Attorneys() {
   return (
     <section id="attorneys" className="relative overflow-hidden px-5 py-28 sm:py-36">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_75%_50%,rgba(212,166,74,0.12),transparent)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_75%_50%,rgba(201,162,74,0.12),transparent)]" />
       <div className="relative mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-2">
         <div>
           <SectionHeading
@@ -65,7 +65,7 @@ export function Attorneys() {
           </ul>
           <a
             href="#download"
-            className="mt-10 inline-flex items-center gap-2 rounded-2xl bg-gold-400 px-6 py-3.5 font-semibold text-ink-950 transition-transform hover:scale-[1.03]"
+            className="mt-10 inline-flex items-center gap-2 rounded-[14px] bg-ivory px-6 py-3.5 font-semibold text-ink-950 transition-transform hover:scale-[1.03]"
           >
             <Gavel size={18} weight="bold" /> Join as an attorney
           </a>
@@ -92,7 +92,7 @@ export function Attorneys() {
               );
             })}
           </motion.div>
-          <div className="absolute inset-0 m-auto grid h-28 w-28 place-items-center rounded-full sm:h-36 sm:w-36 border border-gold-400/40 bg-gradient-to-br from-ink-700 to-ink-900 shadow-[0_0_80px_rgba(226,188,110,0.35)]">
+          <div className="absolute inset-0 m-auto grid h-28 w-28 place-items-center rounded-full sm:h-36 sm:w-36 border border-gold-400/40 bg-gradient-to-br from-ink-700 to-ink-900 shadow-[0_0_80px_rgba(201,162,74,0.35)]">
             <Gavel size={56} weight="light" className="text-gold-300" />
           </div>
           <motion.div

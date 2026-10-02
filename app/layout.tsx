@@ -1,15 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Instrument_Serif } from "next/font/google";
+import { Inter, Source_Serif_4 } from "next/font/google";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { site } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin", "cyrillic"], variable: "--font-inter", display: "swap" });
-const instrument = Instrument_Serif({
-  subsets: ["latin"],
-  weight: "400",
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin", "cyrillic"],
   style: ["normal", "italic"],
-  variable: "--font-instrument",
+  axes: ["opsz"],
+  variable: "--font-source-serif",
   display: "swap",
 });
 
@@ -30,14 +30,14 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#05070f",
+  themeColor: "#0b0b0d",
   width: "device-width",
   initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${instrument.variable}`}>
+    <html lang="en" className={`${inter.variable} ${sourceSerif.variable}`}>
       <body className="font-sans">
         <SmoothScroll>{children}</SmoothScroll>
       </body>

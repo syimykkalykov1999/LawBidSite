@@ -9,16 +9,16 @@ type Step = { screen: ScreenId; title: string; body: string };
 
 const flows: Record<"client" | "attorney", Step[]> = {
   client: [
-    { screen: "post", title: "Describe your case", body: "Pick the practice area, explain what happened and, if you like, set a budget. Posting is free." },
+    { screen: "post", title: "Describe your case", body: "Pick one of 42 practice categories and your state, explain what happened and, if you like, set a budget. Posting is free." },
     { screen: "bids", title: "Receive bids", body: "Attorneys qualified in that area get notified and send offers with their price, experience and how they would handle it." },
     { screen: "profile", title: "Compare and choose", body: "Open profiles, check ratings, qualifications and past work. Pick the offer that fits you, not the loudest ad." },
-    { screen: "chat", title: "Work together in one place", body: "Chat with read receipts and typing indicators, call by voice or video, and follow every step until the case is closed." },
+    { screen: "chat", title: "Work together in one place", body: "Chat with read receipts, send voice notes and files, call in the app, and follow every step until the case is closed." },
   ],
   attorney: [
-    { screen: "verify", title: "Create a verified profile", body: "Add your photo, license and the qualifications you practice. Clients see a verified badge next to your name." },
-    { screen: "feed", title: "Get cases that match you", body: "New cases arrive in your feed and notifications only for the areas you practice. No cold leads, no paid directories." },
+    { screen: "verify", title: "Verify your license", body: "Licensed attorney or an attorney's assistant: add your license, the states you cover and your practice areas. Clients see a verified badge next to your name." },
+    { screen: "feed", title: "Get cases that match you", body: "New cases arrive in your feed only for your practice areas and states. No cold leads, no paid directories." },
     { screen: "bid", title: "Send your bid", body: "Set your fee and explain your approach in a few lines. Clients compare offers transparently and pick on merit." },
-    { screen: "planner", title: "Run your practice", body: "Keep hearings and calls in the planner, assign tasks to your assistants, and talk to clients without leaving the app." },
+    { screen: "planner", title: "Run your practice", body: "Keep hearings and calls in the planner, assign tasks to your assistants and approve their work, and talk to clients without leaving the app." },
   ],
 };
 
@@ -33,10 +33,10 @@ export function HowItWorks() {
         eyebrow="How it works"
         title={
           <>
-            Two sides. <span className="italic text-gold-gradient">One fair deal.</span>
+            How will you use <span className="italic text-gold-gradient">LawBid?</span>
           </>
         }
-        sub="LawBid connects people who need legal help with attorneys who want good cases. Here is how it feels on each side."
+        sub="Clients post a case and choose from attorney offers. Attorneys get clients in their practice areas and states."
       />
 
       <div className="mt-10 flex justify-center">
@@ -54,7 +54,7 @@ export function HowItWorks() {
               {role === r && (
                 <motion.span layoutId="role-pill" className="absolute inset-0 -z-10 rounded-full bg-gold-400" transition={{ type: "spring", stiffness: 380, damping: 30 }} />
               )}
-              {r === "client" ? "I need a lawyer" : "I am an attorney"}
+              {r === "client" ? "Client" : "Attorney · PRO"}
             </button>
           ))}
         </div>

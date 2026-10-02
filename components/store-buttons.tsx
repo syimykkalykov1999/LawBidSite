@@ -11,8 +11,8 @@ function AppleGlyph() {
 function PlayGlyph() {
   return (
     <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden="true">
-      <path d="M4.2 2.6c-.25.26-.4.67-.4 1.2v16.4c0 .53.15.94.4 1.2l9.1-9.4z" fill="#4fd1a5" />
-      <path d="M16.3 15l-3-3 3-3 3.6 2.07c1.03.6 1.03 1.57 0 2.16z" fill="#e2bc6e" />
+      <path d="M4.2 2.6c-.25.26-.4.67-.4 1.2v16.4c0 .53.15.94.4 1.2l9.1-9.4z" fill="#34c38a" />
+      <path d="M16.3 15l-3-3 3-3 3.6 2.07c1.03.6 1.03 1.57 0 2.16z" fill="#e3c877" />
       <path d="M16.3 15l-3-3-9.1 9.4c.34.36.9.4 1.53.05z" fill="#ef6b6b" />
       <path d="M16.3 9L5.73 2.95c-.63-.36-1.19-.31-1.53.05l9.1 9z" fill="#6f8cff" />
     </svg>

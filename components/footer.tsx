@@ -8,6 +8,7 @@ const cols = [
     links: [
       ["How it works", "/#how"],
       ["Features", "/#features"],
+      ["Pricing", "/#pricing"],
       ["Download", "/#download"],
       ["FAQ", "/#faq"],
     ],
@@ -64,7 +65,7 @@ export function Footer() {
       </div>
       <div
         aria-hidden="true"
-        className="pointer-events-none mx-auto mt-10 max-w-6xl select-none text-center font-serif text-[22vw] leading-[0.8] text-transparent [-webkit-text-stroke:1px_rgba(226,188,110,0.18)] lg:text-[16rem]"
+        className="pointer-events-none mx-auto mt-10 max-w-6xl select-none text-center font-serif text-[22vw] leading-[0.8] text-transparent [-webkit-text-stroke:1px_rgba(201,162,74,0.18)] lg:text-[16rem]"
       >
         LawBid
       </div>
