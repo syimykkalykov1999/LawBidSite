@@ -1,39 +1,12 @@
 import Link from "next/link";
 import { Logo } from "@/components/ui/logo";
 import { site } from "@/lib/site";
-
-const cols = [
-  {
-    title: "Product",
-    links: [
-      ["How it works", "/#how"],
-      ["Features", "/#features"],
-      ["Pricing", "/#pricing"],
-      ["Download", "/#download"],
-      ["FAQ", "/#faq"],
-    ],
-  },
-  {
-    title: "Attorneys",
-    links: [
-      ["Join LawBid", "/#attorneys"],
-      ["How bidding works", "/#how"],
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      ["Terms of Service", "/terms"],
-      ["Privacy Policy", "/privacy"],
-      ["Cookie Policy", "/cookies"],
-    ],
-  },
-];
+import { footerNav } from "@/content/navigation";
 
 export function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-white/5 px-5 pt-20 pb-10">
-      <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-6xl gap-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
         <div>
           <Logo />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-mist">{site.tagline}</p>
@@ -41,19 +14,19 @@ export function Footer() {
             {site.supportEmail}
           </a>
         </div>
-        {cols.map((c) => (
-          <div key={c.title}>
+        {footerNav.map((c) => (
+          <nav key={c.title} aria-label={c.title}>
             <div className="mb-4 text-xs font-medium tracking-[0.18em] text-ivory/60 uppercase">{c.title}</div>
             <ul className="space-y-2.5">
-              {c.links.map(([l, h]) => (
-                <li key={l}>
-                  <Link href={h} className="text-sm text-mist transition-colors hover:text-ivory">
-                    {l}
+              {c.links.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="text-sm text-mist transition-colors hover:text-ivory">
+                    {l.label}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
         ))}
       </div>
       <div className="mx-auto mt-16 max-w-6xl border-t border-white/5 pt-6 text-xs leading-relaxed text-mist/70">

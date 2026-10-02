@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
-import { Phone } from "@/components/illustrations/phone-mockup";
+import { Phone } from "@/components/phone/phone";
+import { MoreLink } from "@/components/ui/button-link";
 import { flows, type Step } from "@/content/how-it-works";
 import { SectionHeading } from "@/components/ui/section-heading";
 
@@ -42,7 +43,7 @@ export function HowItWorks() {
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
-              {r === "client" ? "Client" : "Attorney · PRO"}
+              {r === "client" ? "Client" : "Attorney"}
             </button>
           ))}
         </div>
@@ -51,7 +52,7 @@ export function HowItWorks() {
       <div className="mx-auto mt-16 grid max-w-6xl gap-10 lg:grid-cols-2 lg:gap-20">
         <div className="sticky top-0 hidden h-svh items-center justify-center lg:flex">
           <div className="relative">
-            <div className="absolute -inset-16 rounded-full bg-gold-500/15 blur-[90px]" />
+            <div className="glow-gold absolute -inset-24 opacity-60" />
             <Phone screen={steps[active].screen} className="relative" />
             <div className="absolute top-1/2 -right-14 flex -translate-y-1/2 flex-col gap-2">
               {steps.map((_, i) => (
@@ -68,6 +69,10 @@ export function HowItWorks() {
             <StepBlock key={s.title} step={s} index={i} onActive={() => setActive(i)} isActive={i === active} />
           ))}
         </div>
+      </div>
+      <div className="mt-6 flex flex-wrap justify-center gap-x-10 gap-y-3">
+        <MoreLink href="/clients">More for clients</MoreLink>
+        <MoreLink href="/attorneys">More for attorneys</MoreLink>
       </div>
     </section>
   );
@@ -103,7 +108,7 @@ function StepBlock({
         <h3 className="mt-2 font-serif text-4xl text-ivory sm:text-5xl">{step.title}</h3>
         <p className="mt-4 max-w-md text-lg leading-relaxed text-mist">{step.body}</p>
         <div className="mt-8 flex justify-center lg:hidden">
-          <Phone screen={step.screen} className="scale-90" />
+          <Phone screen={step.screen} width={252} />
         </div>
       </motion.div>
     </div>

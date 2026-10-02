@@ -1,4 +1,4 @@
-import { faqs } from "@/content/faq";
+import type { FaqItem } from "@/content/faq";
 import { plans } from "@/content/pricing";
 import { site } from "@/lib/site";
 
@@ -12,6 +12,7 @@ function JsonLd({ data }: { data: object }) {
   );
 }
 
+/** Organization and app details, rendered on the home page. */
 export function StructuredData() {
   return (
     <>
@@ -37,25 +38,36 @@ export function StructuredData() {
             { "@type": "Offer", name: "Client", price: "0", priceCurrency: "USD" },
             {
               "@type": "Offer",
-              name: "Attorney PRO monthly",
+              name: `Attorney ${plans.monthly.name}`,
               price: String(plans.monthly.price),
               priceCurrency: "USD",
             },
-            { "@type": "Offer", name: "Attorney PRO yearly", price: String(plans.yearly.price), priceCurrency: "USD" },
+            {
+              "@type": "Offer",
+              name: `Attorney ${plans.yearly.name}`,
+              price: String(plans.yearly.price),
+              priceCurrency: "USD",
+            },
           ],
         }}
       />
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: faqs.map((f) => ({
-            "@type": "Question",
-            name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: f.a },
-          })),
-        }}
-      />
     </>
+  );
+}
+
+/** FAQPage markup. Render only where the same questions are visible. */
+export function FaqStructuredData({ items }: { items: readonly FaqItem[] }) {
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: items.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      }}
+    />
   );
 }

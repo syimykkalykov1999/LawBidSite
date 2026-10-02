@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 import { animate, motion, useMotionValue, useTransform } from "motion/react";
 import { Check, Crown, UserCircle } from "@phosphor-icons/react";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { clientFeatures, plans, proFeatures } from "@/content/pricing";
+import Link from "next/link";
+import { MoreLink } from "@/components/ui/button-link";
+import { billingFacts, clientFeatures, plans, proFeatures } from "@/content/pricing";
 
 type Billing = "monthly" | "yearly";
 
@@ -18,23 +20,25 @@ function Price({ value }: { value: number }) {
   return <motion.span>{text}</motion.span>;
 }
 
-export function Pricing() {
+export function Pricing({ heading = true }: { heading?: boolean }) {
   const [billing, setBilling] = useState<Billing>("monthly");
   const yearly = billing === "yearly";
 
   return (
-    <section id="pricing" className="relative px-5 py-28 sm:py-36">
-      <SectionHeading
-        eyebrow="Pricing"
-        title={
-          <>
-            Free for clients. <span className="text-gold-gradient italic">Simple for attorneys.</span>
-          </>
-        }
-        sub="Clients never pay to post a case. Attorneys choose one plan and add assistants as the practice grows."
-      />
+    <section id="pricing" className={`relative px-5 ${heading ? "py-28 sm:py-36" : "pb-16"}`}>
+      {heading && (
+        <SectionHeading
+          eyebrow="Pricing"
+          title={
+            <>
+              Free for clients. <span className="text-gold-gradient italic">Simple for attorneys.</span>
+            </>
+          }
+          sub="Clients never pay to post a case. Attorneys choose one plan and add assistants as the practice grows."
+        />
+      )}
 
-      <div className="mt-10 flex justify-center">
+      <div className={`${heading ? "mt-10" : ""} flex justify-center`}>
         <div className="relative flex rounded-full border border-white/10 bg-white/[0.04] p-1">
           {(["monthly", "yearly"] as const).map((b) => (
             <button
@@ -50,7 +54,7 @@ export function Pricing() {
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
-              {b === "monthly" ? "Monthly" : "Yearly"}
+              {b === "monthly" ? "Monthly" : "Yearly · Prime"}
             </button>
           ))}
         </div>
@@ -76,12 +80,12 @@ export function Pricing() {
               </li>
             ))}
           </ul>
-          <a
-            href="#download"
+          <Link
+            href="/clients"
             className="mt-auto block rounded-[14px] border border-white/15 py-3.5 text-center font-medium text-ivory transition-colors hover:bg-white/5 max-md:mt-8 md:mt-10"
           >
             Post a case
-          </a>
+          </Link>
         </motion.div>
 
         <motion.div
@@ -91,10 +95,10 @@ export function Pricing() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="relative flex flex-col overflow-hidden rounded-3xl border border-gold-400/40 bg-gradient-to-b from-navy to-ink-900 p-8 shadow-[0_40px_120px_-40px_rgba(201,162,74,0.45)]"
         >
-          <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-gold-400/20 blur-[90px]" />
+          <div className="glow-gold absolute -top-40 -right-40 h-96 w-96 opacity-70" />
           <div className="relative flex items-center justify-between">
             <div className="flex items-center gap-2 text-gold-300">
-              <Crown size={22} weight="light" /> Attorney PRO
+              <Crown size={22} weight="light" /> Attorney · {yearly ? plans.yearly.name : plans.monthly.name}
             </div>
             {yearly && (
               <motion.span
@@ -120,14 +124,26 @@ export function Pricing() {
               </li>
             ))}
           </ul>
-          <a
-            href="#download"
+          <Link
+            href="/attorneys"
             className="relative mt-10 block rounded-[14px] bg-ivory py-3.5 text-center font-semibold text-ink-950 transition-transform hover:scale-[1.02]"
           >
-            Start as an attorney
-          </a>
+            Start 7 days free
+          </Link>
         </motion.div>
       </div>
+      <ul className="mx-auto mt-8 flex max-w-5xl flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-mist">
+        {billingFacts.map((f) => (
+          <li key={f} className="flex items-center gap-2">
+            <Check size={14} className="text-gold-400" /> {f}
+          </li>
+        ))}
+      </ul>
+      {heading && (
+        <p className="mt-6 text-center">
+          <MoreLink href="/pricing">Compare plans in detail</MoreLink>
+        </p>
+      )}
     </section>
   );
 }

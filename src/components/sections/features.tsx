@@ -16,6 +16,7 @@ import {
 } from "@phosphor-icons/react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
+import { MoreLink } from "@/components/ui/button-link";
 
 function CardText({ icon, title, body }: { icon: React.ReactNode; title: string; body: string }) {
   return (
@@ -60,15 +61,11 @@ export function Features() {
             body="Attorneys compete for your case with clear fees up front. No hidden rates, no endless calls to compare prices."
           />
           <div className="pointer-events-none relative mt-6 h-44 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)] sm:absolute sm:top-0 sm:right-7 sm:bottom-0 sm:mt-0 sm:h-auto sm:w-64">
-            <motion.div
-              animate={{ y: ["0%", "-50%"] }}
-              transition={{ repeat: Infinity, duration: 14, ease: "linear" }}
-              className="flex flex-col gap-3"
-            >
+            <div className="flex animate-ticker flex-col gap-3 will-change-transform">
               {[...ticker, ...ticker].map(([a, p], i) => (
                 <div
                   key={i}
-                  className="flex w-full items-center justify-between rounded-2xl border border-white/8 bg-ink-850/80 px-4 py-3 backdrop-blur"
+                  className="flex w-full items-center justify-between rounded-2xl border border-white/8 bg-ink-850 px-4 py-3"
                 >
                   <div>
                     <div className="text-[11px] text-mist">New bid · {a}</div>
@@ -77,7 +74,7 @@ export function Features() {
                   <span className="font-semibold text-mint">{p}</span>
                 </div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </SpotlightCard>
 
@@ -211,8 +208,8 @@ export function Features() {
         <SpotlightCard className="min-h-[300px] p-7 md:col-span-3" delay={0.1}>
           <CardText
             icon={<FilmStrip size={22} weight="light" />}
-            title="Posts, legal news and reels"
-            body="Follow attorneys, read their posts and legal news, and get to know them before you hire. Video reels are coming soon."
+            title="Posts and legal news"
+            body="Follow attorneys, read their posts and legal news, and get to know them before you hire."
           />
           <div className="mt-6 flex gap-3">
             {[
@@ -257,6 +254,9 @@ export function Features() {
           />
         </SpotlightCard>
       </div>
+      <p className="mt-12 text-center">
+        <MoreLink href="/features">See all features</MoreLink>
+      </p>
     </section>
   );
 }

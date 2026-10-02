@@ -36,17 +36,22 @@ All settings are optional public env vars (see `.env.example`). Values are valid
 
 ```
 src/
-  app/                    routes, metadata, icons, robots, sitemap, OG image
-    (legal)/              terms, privacy, cookies with a shared layout
+  app/                    root layout, metadata, icons, robots, sitemap, OG image
+    (site)/               every page, sharing the nav and footer
+      page.tsx            home
+      clients/ attorneys/ features/ pricing/ faq/
+      practice-areas/ about/ contact/ download/
+      (legal)/            terms, privacy, cookies
   components/
     layout/               nav, footer, providers (reduced motion, smooth scroll)
-    sections/             one file per home page section
-    illustrations/        animated scales of justice, phone mockup screens
-    ui/                   small reusable pieces (logo, buttons, cards, headings)
+    sections/             home page sections, several reused on inner pages
+    phone/                app screens rebuilt from the mobile app at real size (390pt)
+    illustrations/        animated scales of justice
+    ui/                   small reusable pieces (page hero, buttons, FAQ list, reveal)
     seo/                  JSON-LD structured data
-  content/                copy and data: FAQ, pricing, practice areas, how-it-works steps
+  content/                copy and data: navigation, pricing, FAQ, features, practice areas
   lib/                    site config and helpers
-public/images/            static images (app icon)
+public/images/            app icon and the 42 practice area photos (WebP)
 ```
 
 To change text or prices, edit `src/content/`. Prices must match the app's subscription settings.
@@ -59,6 +64,14 @@ To change text or prices, edit `src/content/`. Prices must match the app's subsc
 - JSON-LD is serialized with `<` escaped so content cannot break out of the script tag.
 - CI runs lint, typecheck, format check, `npm audit --audit-level=high` and a production build on every PR. Dependabot keeps dependencies and actions up to date.
 - `npm run build:static` output does not carry headers by itself: configure the same headers (copy them from `next.config.ts`) on the static host.
+
+## Phone mockups
+
+`src/components/phone/` redraws real app screens (feed, new case, cases, bids, chat, inbox, profile, Mine, planner) with the app's dark theme colors, Phosphor light icons, spacing and copy. Each screen is laid out on a 390×856 canvas and scaled into the frame. When the app's UI changes, update these screens to match.
+
+## Performance
+
+Scroll animations read the scroll position directly (no extra spring on top of Lenis) and only animate `transform` and `opacity`. Looping effects are CSS animations, and there are no blur filters over moving content. Scrolling measures 60 fps in headless Chrome.
 
 ## Accessibility
 

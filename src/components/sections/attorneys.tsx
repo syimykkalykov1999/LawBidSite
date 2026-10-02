@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "motion/react";
 import {
   Briefcase,
@@ -19,7 +20,7 @@ const perks = [
   "Clients in your practice areas and states",
   "You set your own fee in every bid",
   "Planner, tasks and approvals for your assistants",
-  "Posts and videos that grow your reputation",
+  "Posts and legal news that grow your reputation",
   "Chat and calls with clients in one place",
 ];
 
@@ -63,12 +64,12 @@ export function Attorneys() {
               </motion.li>
             ))}
           </ul>
-          <a
-            href="#download"
+          <Link
+            href="/attorneys"
             className="mt-10 inline-flex items-center gap-2 rounded-[14px] bg-ivory px-6 py-3.5 font-semibold text-ink-950 transition-transform hover:scale-[1.03]"
           >
             <Gavel size={18} weight="bold" /> Join as an attorney
-          </a>
+          </Link>
         </div>
 
         <div className="relative mx-auto aspect-square w-full max-w-[520px]">
@@ -79,11 +80,7 @@ export function Attorneys() {
               style={{ width: `${s * 100}%`, height: `${s * 100}%` }}
             />
           ))}
-          <motion.div
-            className="absolute inset-0"
-            animate={{ rotate: 360 }}
-            transition={{ repeat: Infinity, duration: 60, ease: "linear" }}
-          >
+          <div className="absolute inset-0 animate-orbit will-change-transform">
             {orbit.map(({ Icon, label }, i) => {
               const a = (i / orbit.length) * Math.PI * 2;
               const r = 44;
@@ -97,17 +94,13 @@ export function Attorneys() {
                     transform: "translate(-50%,-50%)",
                   }}
                 >
-                  <motion.div
-                    animate={{ rotate: -360 }}
-                    transition={{ repeat: Infinity, duration: 60, ease: "linear" }}
-                    className="flex items-center gap-1.5 rounded-2xl border border-white/10 bg-ink-850/90 px-2.5 py-1.5 text-xs whitespace-nowrap text-ivory shadow-xl backdrop-blur sm:gap-2 sm:px-3 sm:py-2 sm:text-sm"
-                  >
+                  <div className="flex animate-orbit-reverse items-center gap-1.5 rounded-2xl border border-white/10 bg-ink-850 px-2.5 py-1.5 text-xs whitespace-nowrap text-ivory shadow-xl sm:gap-2 sm:px-3 sm:py-2 sm:text-sm">
                     <Icon size={18} weight="light" className="text-gold-300" /> {label}
-                  </motion.div>
+                  </div>
                 </div>
               );
             })}
-          </motion.div>
+          </div>
           <div className="absolute inset-0 m-auto grid h-28 w-28 place-items-center rounded-full border border-gold-400/40 bg-gradient-to-br from-ink-700 to-ink-900 shadow-[0_0_80px_rgba(201,162,74,0.35)] sm:h-36 sm:w-36">
             <Gavel size={56} weight="light" className="text-gold-300" />
           </div>
@@ -116,12 +109,12 @@ export function Attorneys() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5 }}
-            className="absolute right-0 bottom-[14%] hidden items-center gap-3 rounded-2xl border border-white/10 bg-ink-850/95 px-4 py-3 shadow-2xl backdrop-blur sm:flex"
+            className="absolute right-0 bottom-[14%] hidden items-center gap-3 rounded-2xl border border-white/10 bg-ink-850/95 px-4 py-3 shadow-2xl sm:flex"
           >
             <ChatsCircle size={20} className="text-mint" />
             <div>
               <div className="text-xs text-mist">Bid accepted</div>
-              <div className="text-sm font-medium text-ivory">You were hired · $450</div>
+              <div className="text-sm font-medium text-ivory">Offer accepted · $1,500</div>
             </div>
           </motion.div>
           <motion.div
@@ -129,7 +122,7 @@ export function Attorneys() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.8 }}
-            className="absolute top-[12%] left-0 hidden items-center gap-3 rounded-2xl border border-white/10 bg-ink-850/95 px-4 py-3 shadow-2xl backdrop-blur sm:flex"
+            className="absolute top-[12%] left-0 hidden items-center gap-3 rounded-2xl border border-white/10 bg-ink-850/95 px-4 py-3 shadow-2xl sm:flex"
           >
             <CalendarCheck size={20} className="text-gold-300" />
             <div>

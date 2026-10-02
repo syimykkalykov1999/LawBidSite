@@ -48,20 +48,13 @@ export function Scales({ angle, progress }: Props) {
           <stop offset="0" stopColor="#e3c877" stopOpacity="0.55" />
           <stop offset="1" stopColor="#e3c877" stopOpacity="0" />
         </radialGradient>
-        <filter id="soft-glow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="6" result="b" />
-          <feMerge>
-            <feMergeNode in="b" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
       </defs>
 
       {/* Halo that flares when the scales come to balance */}
       <motion.circle cx={PIVOT_X} cy={PIVOT_Y + 40} r="300" fill="url(#halo)" style={{ opacity: balance }} />
 
       {/* Pillar */}
-      <g filter="url(#soft-glow)">
+      <g>
         <motion.rect
           x="393"
           y="200"

@@ -7,7 +7,6 @@ import {
   useReducedMotion,
   useScroll,
   useSpring,
-  useTime,
   useTransform,
   type MotionValue,
 } from "motion/react";
@@ -16,7 +15,7 @@ import { Scales } from "@/components/illustrations/scales";
 import { seeded } from "@/lib/random";
 import { StoreButtons } from "@/components/ui/store-buttons";
 
-const particles = Array.from({ length: 28 }, (_, i) => ({
+const particles = Array.from({ length: 18 }, (_, i) => ({
   left: `${(seeded(i) * 100).toFixed(2)}%`,
   size: `${(1.5 + seeded(i + 100) * 2.5).toFixed(1)}px`,
   duration: `${(12 + seeded(i + 200) * 16).toFixed(1)}s`,
@@ -24,24 +23,20 @@ const particles = Array.from({ length: 28 }, (_, i) => ({
 }));
 
 const bids = [
-  { name: "Sarah Klein", area: "Family law", price: "$450", rating: "4.9" },
-  { name: "Daniel Ortiz", area: "Family law", price: "$380", rating: "4.8" },
-  { name: "Amira Hassan", area: "Family law", price: "$520", rating: "5.0" },
+  { name: "Sarah Klein", area: "Family law", price: "$1,500", rating: "4.9" },
+  { name: "Daniel Ortiz", area: "Family law", price: "$250/hr", rating: "4.8" },
+  { name: "Amira Hassan", area: "Family law", price: "Free consult", rating: "5.0" },
 ];
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
-  const progress = useSpring(scrollYProgress, { stiffness: 90, damping: 24, mass: 0.4 });
+  // Scroll progress drives everything directly. Lenis already smooths the wheel,
+  // so a second spring here would only add lag.
+  const { scrollYProgress: progress } = useScroll({ target: ref, offset: ["start start", "end end"] });
 
   // Story: the case weighs left, bids tip it right, then it settles in balance.
-  const targetAngle = useTransform(progress, [0, 0.1, 0.5, 0.74, 1], [-7, -7, 9, 0, 0]);
-  const time = useTime();
-  const angle = useTransform(() => {
-    const a = targetAngle.get();
-    return reduce ? a : a + Math.sin(time.get() / 1100) * 1.1;
-  });
+  const angle = useTransform(progress, [0, 0.1, 0.5, 0.74, 1], [-7, -7, 9, 0, 0]);
 
   // Pointer parallax for a little depth.
   const px = useMotionValue(0);
@@ -52,7 +47,7 @@ export function Hero() {
   const headlineOpacity = useTransform(progress, [0, 0.09], [1, 0]);
   const headlineY = useTransform(progress, [0, 0.09], [0, -80]);
   const scalesY = useTransform(progress, [0, 0.1, 0.9, 1], ["30vh", "4vh", "4vh", "-4vh"]);
-  const scalesScale = useTransform(progress, [0, 0.1, 0.9, 1], [0.82, 1, 1, 0.86]);
+  const scalesScale = useTransform(progress, [0, 0.1, 0.9, 1], [0.9, 1, 1, 0.92]);
   const sceneOpacity = useTransform(progress, [0.9, 1], [1, 0.25]);
   const hintOpacity = useTransform(progress, [0, 0.05], [1, 0]);
   const glowOpacity = useTransform(progress, [0, 0.5, 0.74], [0.6, 0.85, 1]);
@@ -62,6 +57,7 @@ export function Hero() {
       ref={ref}
       className="relative h-[420vh]"
       onPointerMove={(e) => {
+        if (reduce || e.pointerType !== "mouse") return;
         px.set((e.clientX / window.innerWidth) * 2 - 1);
         py.set((e.clientY / window.innerHeight) * 2 - 1);
       }}
@@ -71,7 +67,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,#10255a_0%,#0a1a3f_45%,#0b0b0d_100%)]" />
         <div className="grid-lines absolute inset-0" />
         <motion.div
-          className="absolute top-[38%] left-1/2 h-[70vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold-500/20 blur-[120px]"
+          className="glow-gold absolute top-[38%] left-1/2 h-[90vmin] w-[90vmin] -translate-x-1/2 -translate-y-1/2 will-change-[opacity]"
           style={{ opacity: glowOpacity }}
         />
         <div className="pointer-events-none absolute inset-0">
@@ -96,10 +92,13 @@ export function Hero() {
           style={{ opacity: sceneOpacity }}
         >
           <motion.div
-            className="h-[min(78vh,92vw)] w-[min(82vh,96vw)]"
+            className="h-[min(78vh,92vw)] w-[min(82vh,96vw)] will-change-transform"
             style={{ y: scalesY, scale: scalesScale, rotateX: rotX, rotateY: rotY }}
           >
-            <Scales angle={angle} progress={progress} />
+            {/* Idle float runs on the compositor (CSS), so it costs nothing per frame. */}
+            <div className="h-full w-full animate-float-slow">
+              <Scales angle={angle} progress={progress} />
+            </div>
           </motion.div>
         </motion.div>
 
@@ -236,7 +235,7 @@ function Caption({
       style={{ opacity, y }}
       className={`pointer-events-none absolute inset-x-4 bottom-[6%] z-20 mx-auto max-w-sm md:inset-x-auto md:mx-0 md:w-[340px] ${pos}`}
     >
-      <div className="rounded-3xl border border-white/10 bg-ink-900/70 p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)] backdrop-blur-xl">
+      <div className="rounded-3xl border border-white/10 bg-ink-900/92 p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)]">
         <div className="mb-3 flex items-center gap-3">
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-gold-400/15 text-gold-300">{icon}</span>
           <span className="font-mono text-xs tracking-widest text-gold-400">{step}</span>
@@ -283,7 +282,7 @@ function BidCard({
   return (
     <motion.div
       style={{ opacity, x }}
-      className="flex items-center gap-3 rounded-2xl border border-white/10 bg-ink-850/80 p-3 backdrop-blur-xl"
+      className="flex items-center gap-3 rounded-2xl border border-white/10 bg-ink-850/95 p-3"
     >
       <span className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-gold-300 to-gold-600 text-sm font-semibold text-ink-950">
         {initials}
@@ -294,7 +293,7 @@ function BidCard({
           {area} · <Star size={11} weight="fill" className="text-gold-400" /> {rating}
         </div>
       </div>
-      <span className="rounded-lg bg-mint/15 px-2 py-1 text-sm font-semibold text-mint">{price}</span>
+      <span className="rounded-lg bg-mint/15 px-2 py-1 text-sm font-semibold whitespace-nowrap text-mint">{price}</span>
     </motion.div>
   );
 }

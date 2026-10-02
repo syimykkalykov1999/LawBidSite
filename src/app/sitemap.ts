@@ -3,6 +3,22 @@ import { site } from "@/lib/site";
 
 export const dynamic = "force-static";
 
+const routes = [
+  "",
+  "/clients",
+  "/attorneys",
+  "/features",
+  "/practice-areas",
+  "/pricing",
+  "/faq",
+  "/about",
+  "/contact",
+  "/download",
+  "/terms",
+  "/privacy",
+  "/cookies",
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  return ["", "/terms", "/privacy", "/cookies"].map((p) => ({ url: `${site.url}${p}`, lastModified: new Date() }));
+  return routes.map((p) => ({ url: `${site.url}${p}`, lastModified: new Date() }));
 }

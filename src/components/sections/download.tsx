@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Phone } from "@/components/illustrations/phone-mockup";
+import { Phone, type ScreenId } from "@/components/phone/phone";
 import { StoreButtons } from "@/components/ui/store-buttons";
 import { LogoMark } from "@/components/ui/logo";
 
-export function Download() {
+export function Download({ screen = "bids" }: { screen?: ScreenId }) {
   return (
     <section id="download" className="relative px-5 py-28 sm:py-36">
       <motion.div
@@ -15,8 +15,8 @@ export function Download() {
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         className="grain relative mx-auto grid max-w-6xl items-center gap-10 overflow-hidden rounded-[40px] border border-gold-400/20 bg-gradient-to-br from-ink-800 via-ink-900 to-ink-950 px-8 py-14 sm:px-14 lg:grid-cols-[1.2fr_1fr]"
       >
-        <div className="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-gold-500/25 blur-[120px]" />
-        <div className="absolute -bottom-40 left-10 h-80 w-80 rounded-full bg-azure/15 blur-[120px]" />
+        <div className="glow-gold absolute -top-56 -right-56 h-[36rem] w-[36rem]" />
+        <div className="glow-navy absolute -bottom-64 left-0 h-[32rem] w-[32rem]" />
         <div className="relative">
           <LogoMark className="mb-6 h-14 w-14" />
           <h2 className="font-serif text-[clamp(2.4rem,5vw,4.2rem)] leading-[1] text-ivory">
@@ -28,21 +28,13 @@ export function Download() {
           <StoreButtons className="mt-8" />
         </div>
         <div className="relative flex justify-center lg:justify-end">
-          <motion.div
-            animate={{ y: [0, -14, 0] }}
-            transition={{ repeat: Infinity, duration: 7, ease: "easeInOut" }}
-            className="relative"
-          >
-            <Phone screen="bids" />
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-              className="absolute bottom-24 -left-16 hidden rotate-[-6deg] rounded-2xl border border-white/10 bg-ink-850/95 px-4 py-3 shadow-2xl backdrop-blur sm:block"
-            >
-              <div className="text-xs text-mist">Best offer</div>
-              <div className="font-serif text-3xl text-mint">$380</div>
-            </motion.div>
-          </motion.div>
+          <div className="relative animate-float-slow">
+            <Phone screen={screen} />
+            <div className="absolute bottom-24 -left-16 hidden animate-bob rounded-2xl border border-white/10 bg-ink-850 px-4 py-3 shadow-2xl sm:block">
+              <div className="text-xs text-mist">Posting a case</div>
+              <div className="font-serif text-3xl text-mint">$0</div>
+            </div>
+          </div>
         </div>
       </motion.div>
     </section>

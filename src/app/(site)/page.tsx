@@ -1,4 +1,3 @@
-import { Nav } from "@/components/layout/nav";
 import { Hero } from "@/components/sections/hero";
 import { PracticeMarquee } from "@/components/sections/practice-marquee";
 import { Statement } from "@/components/sections/statement";
@@ -8,25 +7,20 @@ import { Attorneys } from "@/components/sections/attorneys";
 import { Pricing } from "@/components/sections/pricing";
 import { Download } from "@/components/sections/download";
 import { Faq } from "@/components/sections/faq";
-import { Footer } from "@/components/layout/footer";
 import { StructuredData } from "@/components/seo/structured-data";
 
 export default function Home() {
   return (
     <>
-      <Nav />
-      <main id="main">
-        <Hero />
-        <PracticeMarquee />
-        <Statement />
-        <HowItWorks />
-        <Features />
-        <Attorneys />
-        <Pricing />
-        <Download />
-        <Faq />
-      </main>
-      <Footer />
+      <Hero />
+      <PracticeMarquee />
+      <Statement />
+      <HowItWorks />
+      <Features />
+      <Attorneys />
+      <Pricing />
+      <Download />
+      <Faq />
       <StructuredData />
     </>
   );
