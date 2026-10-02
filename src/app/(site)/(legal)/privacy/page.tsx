@@ -8,7 +8,10 @@ export const metadata: Metadata = { title: "Privacy Policy" };
 export default function Privacy() {
   return (
     <LegalPage title="Privacy Policy" updated="October 2, 2026">
-      <p>This policy explains what personal data LawBid collects, why, and the choices you have.</p>
+      <p>
+        This policy explains what personal data SiMA LLC (doing business as LawBid) collects through the LawBid apps and
+        website, how it is used, and the choices you have.
+      </p>
       <h2>Data we collect</h2>
       <ul>
         <li>Account data: name, email, phone number, profile photo.</li>
@@ -21,8 +24,12 @@ export default function Privacy() {
         <li>To run the marketplace: show cases to matching attorneys, deliver bids, messages and calls.</li>
         <li>To keep the Service safe: verify attorneys, prevent fraud and abuse.</li>
         <li>To send notifications you asked for, and service emails.</li>
+        <li>To send one-time verification codes by SMS to the mobile number you enter, when you request a code.</li>
       </ul>
       <h2>Sharing</h2>
+      <p>
+        We do not sell or share your SMS opt-in data or personal information with third parties for marketing purposes.
+      </p>
       <p>
         We share data with the other party of a conversation or bid, and with service providers that host and operate
         the Service (cloud hosting, storage, video delivery, email). We do not sell personal data.

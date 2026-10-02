@@ -9,8 +9,8 @@ export default function Terms() {
   return (
     <LegalPage title="Terms of Service" updated="October 2, 2026">
       <p>
-        These Terms govern your use of the LawBid mobile apps and website (the “Service”). By creating an account or
-        using the Service you agree to them.
+        These Terms govern your use of the LawBid mobile apps and website (the “Service”), operated by SiMA LLC (doing
+        business as LawBid). By creating an account or using the Service you agree to them.
       </p>
       <h2>1. What LawBid is</h2>
       <p>
@@ -44,18 +44,19 @@ export default function Terms() {
         The Service is provided “as is”. To the extent permitted by law, LawBid is not liable for the advice or services
         provided by attorneys or for indirect losses.
       </p>
-      <h2>7. SMS messages</h2>
+      <h2>SMS Terms</h2>
       <p>
-        When you tap Get code in the app, you agree to receive a one-time verification SMS from LawBid. Message
-        frequency: one message per request. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help, or
-        contact {site.supportEmail}. Carriers are not liable for delayed or undelivered messages. Mobile numbers and SMS
-        opt-in data are not shared with third parties for marketing. Details:{" "}
+        SiMA LLC (doing business as LawBid) sends one-time verification codes by SMS. When you tap Get code in the app,
+        you agree to receive a one-time verification SMS from LawBid. Message frequency: one message per request.
+        Message and data rates may apply. Reply STOP to opt out, HELP for help, or contact {site.supportEmail}. Carriers
+        are not liable for delayed or undelivered messages. Mobile numbers and SMS opt-in data are not shared with third
+        parties for marketing. Details:{" "}
         <Link href="/sms-consent" className="text-gold-300 underline">
           SMS Verification Consent
         </Link>
         .
       </p>
-      <h2>8. Contact</h2>
+      <h2>7. Contact</h2>
       <p>Questions about these Terms: {site.supportEmail}</p>
     </LegalPage>
   );
