@@ -17,6 +17,7 @@ const routes = [
   "/terms",
   "/privacy",
   "/cookies",
+  "/sms-consent",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
