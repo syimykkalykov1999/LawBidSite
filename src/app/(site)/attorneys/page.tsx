@@ -196,7 +196,7 @@ export default function AttorneysPage() {
         </div>
       </section>
 
-      <Download screen="mine" />
+      <Download screen="chat" />
     </>
   );
 }
