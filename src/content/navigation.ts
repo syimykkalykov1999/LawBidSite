@@ -46,6 +46,7 @@ export const footerNav: readonly { title: string; links: readonly NavLink[] }[] 
     links: [
       { href: "/terms", label: "Terms of Service" },
       { href: "/privacy", label: "Privacy Policy" },
+      { href: "/sms-consent", label: "SMS Terms" },
       { href: "/cookies", label: "Cookie Policy" },
     ],
   },

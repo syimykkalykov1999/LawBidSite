@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { LegalPage } from "@/components/ui/legal-page";
 import { site } from "@/lib/site";
 
@@ -43,7 +44,18 @@ export default function Terms() {
         The Service is provided “as is”. To the extent permitted by law, LawBid is not liable for the advice or services
         provided by attorneys or for indirect losses.
       </p>
-      <h2>7. Contact</h2>
+      <h2>7. SMS messages</h2>
+      <p>
+        When you tap Get code in the app, you agree to receive a one-time verification SMS from LawBid. Message
+        frequency: one message per request. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help, or
+        contact {site.supportEmail}. Carriers are not liable for delayed or undelivered messages. Mobile numbers and SMS
+        opt-in data are not shared with third parties for marketing. Details:{" "}
+        <Link href="/sms-consent" className="text-gold-300 underline">
+          SMS Verification Consent
+        </Link>
+        .
+      </p>
+      <h2>8. Contact</h2>
       <p>Questions about these Terms: {site.supportEmail}</p>
     </LegalPage>
   );
