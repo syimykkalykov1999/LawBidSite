@@ -5,8 +5,13 @@
   "scripts": {
     "dev": "next dev -p 3100",
     "build": "next build",
+    "build:static": "STATIC_EXPORT=1 next build",
     "start": "next start -p 3100",
-    "lint": "tsc --noEmit"
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run lint && npm run typecheck && npm run format:check"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
@@ -21,8 +26,15 @@
     "@types/node": "^26.6.4",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.3.8",
     "postcss": "^8.5.28",
+    "prettier": "^3.9.9",
+    "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=20.9"
   }
 }

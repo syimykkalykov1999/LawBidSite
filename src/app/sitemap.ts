@@ -1,0 +1,24 @@
+import type { MetadataRoute } from "next";
+import { site } from "@/lib/site";
+
+export const dynamic = "force-static";
+
+const routes = [
+  "",
+  "/clients",
+  "/attorneys",
+  "/features",
+  "/practice-areas",
+  "/pricing",
+  "/faq",
+  "/about",
+  "/contact",
+  "/download",
+  "/terms",
+  "/privacy",
+  "/cookies",
+];
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return routes.map((p) => ({ url: `${site.url}${p}`, lastModified: new Date() }));
+}

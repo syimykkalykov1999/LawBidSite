@@ -1,39 +1,95 @@
 # LawBid website
 
-Marketing site for the LawBid app: clients post legal cases, verified attorneys bid.
+Marketing site for the LawBid app: clients post legal cases for free, licensed US attorneys bid on them.
 
-Built with Next.js (App Router), Tailwind CSS v4, Motion and Lenis smooth scroll. Icons: Phosphor.
+**Stack:** Next.js 16 (App Router, static pages), React 19, TypeScript, Tailwind CSS v4, Motion, Lenis smooth scroll, Phosphor icons. Fonts (Inter, Source Serif 4) are self-hosted through `next/font`.
 
-## Run locally
+## Getting started
+
+Requires Node 20.9+ (see `.nvmrc`).
 
 ```bash
 npm install
-npm run dev        # http://localhost:3100
+npm run dev            # http://localhost:3100
 ```
 
-## Build
+| Script                        | What it does                                                  |
+| ----------------------------- | ------------------------------------------------------------- |
+| `npm run dev`                 | Dev server with hot reload                                    |
+| `npm run build` / `npm start` | Production build and Node server (sends the security headers) |
+| `npm run build:static`        | Plain static site in `out/` for any static host               |
+| `npm run check`               | ESLint, TypeScript and Prettier checks (same as CI)           |
+| `npm run format`              | Format all files with Prettier                                |
 
-```bash
-npm run build && npm start          # Node server
-STATIC_EXPORT=1 npm run build       # plain static site in out/ (any static host)
+## Configuration
+
+All settings are optional public env vars (see `.env.example`). Values are validated: links must be `https://`, otherwise they are ignored.
+
+| Variable                     | Purpose                                                                              |
+| ---------------------------- | ------------------------------------------------------------------------------------ |
+| `NEXT_PUBLIC_SITE_URL`       | Public site URL for canonical links, Open Graph and the sitemap                      |
+| `NEXT_PUBLIC_BASE_PATH`      | Sub-path the site is served from, e.g. `/LawBidSite` (static export on GitHub Pages) |
+| `NEXT_PUBLIC_APP_STORE_URL`  | App Store link; the button shows "Coming soon" until set                             |
+| `NEXT_PUBLIC_PLAY_STORE_URL` | Google Play link; same as above                                                      |
+| `NEXT_PUBLIC_SUPPORT_EMAIL`  | Support address shown on the site                                                    |
+
+## Project structure
+
+```
+src/
+  app/                    root layout, metadata, icons, robots, sitemap, OG image
+    (site)/               every page, sharing the nav and footer
+      page.tsx            home
+      clients/ attorneys/ features/ pricing/ faq/
+      practice-areas/ about/ contact/ download/
+      (legal)/            terms, privacy, cookies
+  components/
+    layout/               nav, footer, providers (reduced motion, smooth scroll)
+    sections/             home page sections, several reused on inner pages
+    phone/                app screens rebuilt from the mobile app at real size (390pt)
+    illustrations/        animated scales of justice
+    ui/                   small reusable pieces (page hero, buttons, FAQ list, reveal)
+    seo/                  JSON-LD structured data
+  content/                copy and data: navigation, pricing, FAQ, features, practice areas
+  lib/                    site config and helpers
+public/images/            app icon and the 42 practice area photos (WebP)
 ```
 
-## Settings
+To change text or prices, edit `src/content/`. Prices must match the app's subscription settings.
 
-Set these env vars when the apps are live (until then the store buttons say "Coming soon"):
+## Publishing on GitHub Pages
 
-| Variable | Purpose |
-|---|---|
-| `NEXT_PUBLIC_SITE_URL` | Public site URL, used for SEO tags and sitemap |
-| `NEXT_PUBLIC_APP_STORE_URL` | App Store link |
-| `NEXT_PUBLIC_PLAY_STORE_URL` | Google Play link |
-| `NEXT_PUBLIC_SUPPORT_EMAIL` | Support address shown on the site |
+`.github/workflows/pages.yml` builds the static site (`npm run build:static`) and publishes it every time `main` changes. One-time setup in the repository:
 
-## Structure
+1. Go to **Settings > Pages > Build and deployment** and set **Source** to **GitHub Actions**. Do this first: without it the deploy step fails.
+2. Merge the pull request into `main`. Every later change to `main` publishes again, and **Actions > Deploy to GitHub Pages > Run workflow** publishes on demand.
+3. Open the **Actions** tab. When the run finishes, the site is at `https://<owner>.github.io/LawBidSite/`.
 
-- `app/` pages: home, `/terms`, `/privacy`, `/cookies`, plus icon, OG image, robots and sitemap
-- `components/hero.tsx` + `components/scales.tsx` scroll-driven scales of justice
-- `components/phone.tsx` app screens drawn in HTML for the "How it works" section
-- `lib/site.ts` site name, links, practice areas
+The workflow reads the Pages settings, so it works under that address (it sets `NEXT_PUBLIC_BASE_PATH` to `/LawBidSite`) and, after you add a custom domain under Settings > Pages, at the domain root. Store links and the support email can be set as repository variables (**Settings > Secrets and variables > Actions > Variables**) named like the env vars above. GitHub Pages cannot send HTTP headers, so the security headers from `next.config.ts` only apply on a host that supports them (for example Vercel with `npm run build`).
 
-The legal pages are drafts and must be reviewed by a lawyer before launch.
+## Security
+
+- Strict security headers on every response (`next.config.ts`): Content-Security-Policy locked to `'self'`, HSTS, `X-Frame-Options: DENY`, `nosniff`, Referrer-Policy, Permissions-Policy, COOP/CORP.
+- No third-party scripts, trackers, iframes or external fonts. No forms or user input on the site.
+- Env-provided links are validated to `https://` and emails to a strict pattern before rendering.
+- JSON-LD is serialized with `<` escaped so content cannot break out of the script tag.
+- CI runs lint, typecheck, format check, `npm audit --audit-level=high` and a production build on every PR. Dependabot keeps dependencies and actions up to date.
+- `npm run build:static` output does not carry headers by itself: configure the same headers (copy them from `next.config.ts`) on the static host.
+
+## Phone mockups
+
+`src/components/phone/` redraws real app screens (feed, new case, cases, bids, chat, inbox, profile, Mine, planner) with the app's dark theme colors, Phosphor light icons, spacing and copy. Each screen is laid out on a 390×856 canvas and scaled into the frame. When the app's UI changes, update these screens to match.
+
+## Performance
+
+Scroll animations read the scroll position directly (no extra spring on top of Lenis) and only animate `transform` and `opacity`. Looping effects are CSS animations, and there are no blur filters over moving content. Scrolling measures 60 fps in headless Chrome.
+
+## Accessibility
+
+Skip-to-content link, visible keyboard focus, semantic landmarks, `aria-expanded` on the FAQ, and animations that respect the system "reduce motion" setting.
+
+## Before launch
+
+- Have a lawyer review `/terms`, `/privacy` and `/cookies` (they are drafts).
+- Set the store links and support email.
+- Attorney names and prices in the mockups are illustrative.
