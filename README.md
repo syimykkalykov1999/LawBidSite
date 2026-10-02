@@ -25,12 +25,13 @@ npm run dev            # http://localhost:3100
 
 All settings are optional public env vars (see `.env.example`). Values are validated: links must be `https://`, otherwise they are ignored.
 
-| Variable                     | Purpose                                                         |
-| ---------------------------- | --------------------------------------------------------------- |
-| `NEXT_PUBLIC_SITE_URL`       | Public site URL for canonical links, Open Graph and the sitemap |
-| `NEXT_PUBLIC_APP_STORE_URL`  | App Store link; the button shows "Coming soon" until set        |
-| `NEXT_PUBLIC_PLAY_STORE_URL` | Google Play link; same as above                                 |
-| `NEXT_PUBLIC_SUPPORT_EMAIL`  | Support address shown on the site                               |
+| Variable                     | Purpose                                                                              |
+| ---------------------------- | ------------------------------------------------------------------------------------ |
+| `NEXT_PUBLIC_SITE_URL`       | Public site URL for canonical links, Open Graph and the sitemap                      |
+| `NEXT_PUBLIC_BASE_PATH`      | Sub-path the site is served from, e.g. `/LawBidSite` (static export on GitHub Pages) |
+| `NEXT_PUBLIC_APP_STORE_URL`  | App Store link; the button shows "Coming soon" until set                             |
+| `NEXT_PUBLIC_PLAY_STORE_URL` | Google Play link; same as above                                                      |
+| `NEXT_PUBLIC_SUPPORT_EMAIL`  | Support address shown on the site                                                    |
 
 ## Project structure
 
@@ -55,6 +56,16 @@ public/images/            app icon and the 42 practice area photos (WebP)
 ```
 
 To change text or prices, edit `src/content/`. Prices must match the app's subscription settings.
+
+## Publishing on GitHub Pages
+
+`.github/workflows/pages.yml` builds the static site (`npm run build:static`) and publishes it every time `main` changes. One-time setup in the repository:
+
+1. Go to **Settings > Pages > Build and deployment** and set **Source** to **GitHub Actions**. Do this first: without it the deploy step fails.
+2. Merge the pull request into `main`. Every later change to `main` publishes again, and **Actions > Deploy to GitHub Pages > Run workflow** publishes on demand.
+3. Open the **Actions** tab. When the run finishes, the site is at `https://<owner>.github.io/LawBidSite/`.
+
+The workflow reads the Pages settings, so it works under that address (it sets `NEXT_PUBLIC_BASE_PATH` to `/LawBidSite`) and, after you add a custom domain under Settings > Pages, at the domain root. Store links and the support email can be set as repository variables (**Settings > Secrets and variables > Actions > Variables**) named like the env vars above. GitHub Pages cannot send HTTP headers, so the security headers from `next.config.ts` only apply on a host that supports them (for example Vercel with `npm run build`).
 
 ## Security
 

@@ -4,6 +4,7 @@ import { useDeferredValue, useState } from "react";
 import Image from "next/image";
 import { MagnifyingGlass } from "@phosphor-icons/react";
 import type { PracticeArea } from "@/content/practice-areas";
+import { withBase } from "@/lib/site";
 
 /** Searchable grid of every practice area with the app's category art. */
 export function PracticeGrid({ areas }: { areas: readonly PracticeArea[] }) {
@@ -42,7 +43,7 @@ export function PracticeGrid({ areas }: { areas: readonly PracticeArea[] }) {
             >
               <div className="relative aspect-[16/9] overflow-hidden">
                 <Image
-                  src={a.image}
+                  src={withBase(a.image)}
                   alt=""
                   fill
                   sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"

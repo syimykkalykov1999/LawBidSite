@@ -58,9 +58,10 @@ import {
   TopicBar,
   Verified,
 } from "./app-ui";
+import { withBase } from "@/lib/site";
 import { ScalesLogo } from "./scales-logo";
 
-const practiceImage = (slug: string) => `/images/practice/${slug}.webp`;
+const practiceImage = (slug: string) => withBase(`/images/practice/${slug}.webp`);
 
 function Photo({ slug, sizes = "260px" }: { slug: string; sizes?: string }) {
   return <Image src={practiceImage(slug)} alt="" fill sizes={sizes} className="object-cover" unoptimized />;

@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Source_Serif_4 } from "next/font/google";
 import { Providers } from "@/components/layout/providers";
-import { site } from "@/lib/site";
+import { site, withBase } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin", "cyrillic"], variable: "--font-inter", display: "swap" });
@@ -27,7 +27,10 @@ export const metadata: Metadata = {
     url: site.url,
   },
   twitter: { card: "summary_large_image", title: site.name, description: site.description },
-  icons: { apple: "/images/lawbid-icon.png" },
+  icons: {
+    icon: [{ url: withBase("/icon.svg"), type: "image/svg+xml" }],
+    apple: withBase("/images/lawbid-icon.png"),
+  },
   formatDetection: { telephone: false, email: false, address: false },
 };
 

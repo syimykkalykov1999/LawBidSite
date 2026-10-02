@@ -12,6 +12,7 @@ import { Download } from "@/components/sections/download";
 import { clientBenefits, clientSteps } from "@/content/clients";
 import { faqGroups } from "@/content/faq";
 import { practiceAreas } from "@/content/practice-areas";
+import { withBase } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "For clients",
@@ -131,7 +132,7 @@ export default function ClientsPage() {
                   className="group relative block aspect-[4/3] overflow-hidden rounded-2xl border border-white/8"
                 >
                   <Image
-                    src={a.image}
+                    src={withBase(a.image)}
                     alt=""
                     fill
                     sizes="(min-width: 640px) 25vw, 50vw"

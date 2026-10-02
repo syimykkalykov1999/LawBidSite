@@ -13,6 +13,14 @@ function email(value: string | undefined, fallback: string): string {
   return value && /^[^\s@<>"]+@[^\s@<>"]+\.[a-z]{2,}$/i.test(value) ? value : fallback;
 }
 
+/** Sub-path the site is served from ("" at a domain root). Must match basePath in next.config.ts. */
+export const basePath = /^\/[\w.-]+$/.test(process.env.NEXT_PUBLIC_BASE_PATH ?? "")
+  ? (process.env.NEXT_PUBLIC_BASE_PATH as string)
+  : "";
+
+/** next/link adds the base path by itself, but a plain image or file URL needs it added by hand. */
+export const withBase = (path: string) => `${basePath}${path}`;
+
 // Store links and contact details. Set the env vars once the apps are live;
 // until then the download buttons show "Coming soon".
 export const site = {
