@@ -6,6 +6,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Picks up prices changed in the LawBid admin (scripts/fetch-pricing.mjs).
+  schedule:
+    - cron: "17 */6 * * *"
 
 permissions:
   contents: read
@@ -37,6 +40,8 @@ jobs:
           NEXT_PUBLIC_APP_STORE_URL: ${{ vars.NEXT_PUBLIC_APP_STORE_URL }}
           NEXT_PUBLIC_PLAY_STORE_URL: ${{ vars.NEXT_PUBLIC_PLAY_STORE_URL }}
           NEXT_PUBLIC_SUPPORT_EMAIL: ${{ vars.NEXT_PUBLIC_SUPPORT_EMAIL }}
+          # e.g. https://api.lawbid.dev/api/v1/pricing once the API is public.
+          PRICING_API_URL: ${{ vars.PRICING_API_URL }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out

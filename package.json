@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3100",
+    "prebuild": "node scripts/fetch-pricing.mjs",
     "build": "next build",
+    "prebuild:static": "node scripts/fetch-pricing.mjs",
     "build:static": "STATIC_EXPORT=1 next build",
     "start": "next start -p 3100",
     "lint": "eslint .",
