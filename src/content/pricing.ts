@@ -1,13 +1,17 @@
-// Prices and plan names mirror the app's subscription screens (plans.*, prime.*,
-// subscription.* strings). Update both together.
-export const SEAT_PRICE = 100;
-export const MONTHLY_PRICE = 399;
-export const YEARLY_PRICE = 9590;
-export const MAX_SEATS = 6;
-export const TRIAL_DAYS = 7;
+import prices from "./pricing.json";
+
+// Plan names mirror the app's subscription screens (plans.*, prime.*,
+// subscription.* strings). The amounts are set in the LawBid admin (Prices):
+// scripts/fetch-pricing.mjs pulls them into pricing.json before each build.
+export const SEAT_PRICE = prices.seatCents / 100;
+export const MONTHLY_PRICE = prices.monthlyCents / 100;
+export const YEARLY_PRICE = prices.yearlyCents / 100;
+export const MAX_SEATS = prices.maxSeats;
+export const TRIAL_DAYS = prices.trialDays;
 const yearlySavings = (MONTHLY_PRICE + SEAT_PRICE * MAX_SEATS) * 12 - YEARLY_PRICE;
 
-export const usd = (n: number) => `$${n.toLocaleString("en-US")}`;
+export const usd = (n: number) =>
+  `$${n.toLocaleString("en-US", { minimumFractionDigits: Number.isInteger(n) ? 0 : 2, maximumFractionDigits: 2 })}`;
 
 export const plans = {
   monthly: {

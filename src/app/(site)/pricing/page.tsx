@@ -5,13 +5,21 @@ import { FaqList } from "@/components/ui/faq-list";
 import { Reveal } from "@/components/ui/reveal";
 import { Pricing } from "@/components/sections/pricing";
 import { Download } from "@/components/sections/download";
-import { comparison, plans } from "@/content/pricing";
+import {
+  MAX_SEATS,
+  MONTHLY_PRICE,
+  SEAT_PRICE,
+  TRIAL_DAYS,
+  YEARLY_PRICE,
+  comparison,
+  plans,
+  usd,
+} from "@/content/pricing";
 import { faqGroups } from "@/content/faq";
 
 export const metadata: Metadata = {
   title: "Pricing",
-  description:
-    "Free for clients. Attorneys pay $399 a month plus $100 per assistant, or $9,590 a year for Prime with 6 assistants included. 7 days free for verified attorneys.",
+  description: `Free for clients. Attorneys pay ${usd(MONTHLY_PRICE)} a month plus ${usd(SEAT_PRICE)} per assistant, or ${usd(YEARLY_PRICE)} a year for Prime with ${MAX_SEATS} assistants included. ${TRIAL_DAYS} days free for verified attorneys.`,
   alternates: { canonical: "/pricing" },
 };
 

@@ -1,3 +1,5 @@
+import { MAX_SEATS, MONTHLY_PRICE, SEAT_PRICE, YEARLY_PRICE, usd } from "./pricing";
+
 export type FaqItem = { q: string; a: string };
 export type FaqGroup = { id: string; title: string; items: readonly FaqItem[] };
 
@@ -78,7 +80,7 @@ export const faqGroups: readonly FaqGroup[] = [
     items: [
       {
         q: "How much does it cost?",
-        a: "Clients use LawBid for free. Attorneys pay $399 a month plus $100 a month for each assistant, or choose Prime: $9,590 a year with all 6 assistant seats included.",
+        a: `Clients use LawBid for free. Attorneys pay ${usd(MONTHLY_PRICE)} a month plus ${usd(SEAT_PRICE)} a month for each assistant, or choose Prime: ${usd(YEARLY_PRICE)} a year with all ${MAX_SEATS} assistant seats included.`,
       },
       {
         q: "Is there a free trial?",
