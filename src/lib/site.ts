@@ -25,10 +25,10 @@ export const withBase = (path: string) => `${basePath}${path}`;
 // until then the download buttons show "Coming soon".
 export const site = {
   name: "LawBid",
-  url: httpsUrl(process.env.NEXT_PUBLIC_SITE_URL, "https://lawbid.net").replace(/\/$/, ""),
+  url: httpsUrl(process.env.NEXT_PUBLIC_SITE_URL, "https://lawbid.app").replace(/\/$/, ""),
   appStoreUrl: httpsUrl(process.env.NEXT_PUBLIC_APP_STORE_URL),
   playStoreUrl: httpsUrl(process.env.NEXT_PUBLIC_PLAY_STORE_URL),
-  supportEmail: email(process.env.NEXT_PUBLIC_SUPPORT_EMAIL, "support@lawbid.net"),
+  supportEmail: email(process.env.NEXT_PUBLIC_SUPPORT_EMAIL, "support@lawbid.app"),
   tagline: "Post your case. Attorneys bid. You choose.",
   description:
     "LawBid is the legal marketplace where clients post their case for free and licensed US attorneys compete with transparent bids. Compare, chat, call and hire in one app.",
