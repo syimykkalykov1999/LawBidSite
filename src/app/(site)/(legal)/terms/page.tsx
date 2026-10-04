@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "Terms of Service" };
 
 export default function Terms() {
   return (
-    <LegalPage title="Terms of Service" updated="October 2, 2026">
+    <LegalPage title="Terms of Service" updated="October 4, 2026">
       <p>
         These Terms govern your use of the LawBid mobile apps and website (the “Service”), operated by SiMA LLC (doing
         business as LawBid). By creating an account or using the Service you agree to them.
@@ -24,22 +24,38 @@ export default function Terms() {
         <li>Attorneys must hold a valid license for the jurisdictions and practice areas they list.</li>
         <li>We may suspend accounts that break these Terms or the law.</li>
       </ul>
-      <h2>3. Cases and bids</h2>
+      <h2>3. Attorney licenses (self-declared)</h2>
+      <p>
+        To act as an attorney on LawBid you enter the state and bar or license number of each license you hold and
+        confirm, under penalty of perjury, that you are the attorney licensed under that number and that the license is
+        active and in good standing. You must keep this information current and remove a license that lapses, is
+        suspended or is revoked. We record the time, IP address and version of the statement you accepted.
+      </p>
+      <p>
+        LawBid does not independently check this information with state bars or courts. Attorney licenses shown in the
+        app are self-declared, and the attorney alone is responsible for their accuracy. Clients should confirm an
+        attorney&apos;s license with the relevant state bar before hiring them.
+      </p>
+      <p>
+        Anyone can report an account they believe is false. We may then ask the attorney for a government ID, a selfie
+        or proof of license, and we may suspend or permanently ban any account that gives false license information.
+      </p>
+      <h2>4. Cases and bids</h2>
       <p>
         Clients are responsible for the information they publish. Bids are offers made by attorneys; an engagement is
         formed only when a client and an attorney agree to it. Fees, scope and outcomes are between the client and the
         attorney.
       </p>
-      <h2>4. Subscriptions and payments</h2>
+      <h2>5. Subscriptions and payments</h2>
       <p>
         Paid features, if any, are described in the app together with their price and renewal terms before you purchase.
       </p>
-      <h2>5. Content</h2>
+      <h2>6. Content</h2>
       <p>
         You keep ownership of the content you post (posts, videos, messages) and give LawBid a license to host and
         display it in order to run the Service. Do not post unlawful, misleading or confidential third-party content.
       </p>
-      <h2>6. Liability</h2>
+      <h2>7. Liability</h2>
       <p>
         The Service is provided “as is”. To the extent permitted by law, LawBid is not liable for the advice or services
         provided by attorneys or for indirect losses.
@@ -56,7 +72,7 @@ export default function Terms() {
         </Link>
         .
       </p>
-      <h2>7. Contact</h2>
+      <h2>8. Contact</h2>
       <p>Questions about these Terms: {site.supportEmail}</p>
     </LegalPage>
   );
