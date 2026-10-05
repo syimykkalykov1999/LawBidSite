@@ -46,6 +46,11 @@ export const footerNav: readonly { title: string; links: readonly NavLink[] }[] 
     links: [
       { href: "/terms", label: "Terms of Service" },
       { href: "/privacy", label: "Privacy Policy" },
+      { href: "/client-agreement", label: "Client Agreement" },
+      { href: "/attorney-agreement", label: "Attorney Agreement" },
+      { href: "/eula", label: "App License (EULA)" },
+      { href: "/refunds", label: "Refunds & Cancellation" },
+      { href: "/third-party-services", label: "Third-Party Services" },
       { href: "/sms-consent", label: "SMS Terms" },
       { href: "/cookies", label: "Cookie Policy" },
       { href: "/dmca", label: "DMCA" },

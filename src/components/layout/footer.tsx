@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Logo } from "@/components/ui/logo";
+import { CookieSettingsButton } from "@/components/consent/cookie-settings-button";
+import { CompanyBlock } from "@/components/ui/company-block";
 import { site } from "@/lib/site";
 import { footerNav } from "@/content/navigation";
 
@@ -33,6 +35,10 @@ export function Footer() {
         <p>
           LawBid is a technology platform, not a law firm, and does not provide legal advice. Attorneys on LawBid are
           independent professionals responsible for their own services.
+        </p>
+        <CompanyBlock className="mt-2" />
+        <p className="mt-2">
+          <CookieSettingsButton className="underline transition-colors hover:text-ivory" />
         </p>
         <p className="mt-2">© {new Date().getFullYear()} LawBid. All rights reserved.</p>
       </div>

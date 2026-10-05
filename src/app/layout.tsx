@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Source_Serif_4 } from "next/font/google";
+import { CookieConsent } from "@/components/consent/cookie-consent";
 import { Providers } from "@/components/layout/providers";
 import { site, withBase } from "@/lib/site";
 import "./globals.css";
@@ -51,6 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         <Providers>{children}</Providers>
+        <CookieConsent />
       </body>
     </html>
   );

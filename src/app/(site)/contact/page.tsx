@@ -3,6 +3,7 @@ import { Briefcase, Lifebuoy, Megaphone, ShieldCheck } from "@phosphor-icons/rea
 import { PageHero } from "@/components/ui/page-hero";
 import { MoreLink } from "@/components/ui/button-link";
 import { Reveal } from "@/components/ui/reveal";
+import { CompanyBlock } from "@/components/ui/company-block";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -74,6 +75,7 @@ export default function ContactPage() {
           LawBid cannot give legal advice. If you need help with a legal matter, post your case in the app and attorneys
           will reply with their offers.
         </p>
+        <CompanyBlock className="mx-auto mt-6 max-w-2xl text-center text-sm text-mist" />
       </section>
     </>
   );
