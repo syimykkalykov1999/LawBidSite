@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["TEAMID.com.lawbid.lawbid"],
+        "components": [
+          { "/": "/r/*", "comment": "Referral links lawbid.dev/r/<CODE>" }
+        ]
+      }
+    ]
+  }
+}
