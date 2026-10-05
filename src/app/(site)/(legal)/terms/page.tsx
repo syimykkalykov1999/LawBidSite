@@ -21,6 +21,29 @@ export default function Terms() {
         bids. LawBid is not a law firm, does not provide legal advice and is not a party to any agreement between a
         client and an attorney.
       </p>
+      <p>
+        Additional terms apply depending on how you use LawBid: the{" "}
+        <Link href="/client-agreement" className="text-gold-300 underline">
+          Client Agreement
+        </Link>
+        , the{" "}
+        <Link href="/attorney-agreement" className="text-gold-300 underline">
+          Attorney Services Agreement
+        </Link>
+        , the{" "}
+        <Link href="/eula" className="text-gold-300 underline">
+          App License Agreement (EULA)
+        </Link>
+        , the{" "}
+        <Link href="/refunds" className="text-gold-300 underline">
+          Refund &amp; Cancellation Policy
+        </Link>{" "}
+        and our{" "}
+        <Link href="/third-party-services" className="text-gold-300 underline">
+          list of third-party services
+        </Link>
+        . They are part of these Terms.
+      </p>
       <h2>2. Accounts</h2>
       <ul>
         <li>You must provide accurate information and keep your login details secure.</li>
