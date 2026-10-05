@@ -46,8 +46,8 @@ export default function Terms() {
           <strong>Self-declared</strong> (level 0): only the attorney&apos;s own statement about their license.
         </li>
         <li>
-          <strong>Registry</strong> (level 1): the bar number and the name matched the public record of the state bar
-          or court at the time of an automatic check, or a member of our staff confirmed the license by hand.
+          <strong>Registry</strong> (level 1): the bar number and the name matched the public record of the state bar or
+          court at the time of an automatic check, or a member of our staff confirmed the license by hand.
         </li>
         <li>
           <strong>Identity</strong> (level 2): the attorney&apos;s payment account passed the identity verification of
