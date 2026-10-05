@@ -19,29 +19,43 @@ function PlayGlyph() {
   );
 }
 
-function StoreButton({
+export type StoreButtonLabels = {
+  /** Small line above the store name, e.g. "Download on the". */
+  top: string;
+  /** Store name, e.g. "App Store". */
+  bottom: string;
+  /** Replaces `top` when there is no link yet. */
+  comingSoon: string;
+};
+
+const defaultLabels = { comingSoon: "Coming soon on" };
+
+/**
+ * One store button. An empty `href` renders the "coming soon" state; a non-empty `href`
+ * must be an absolute https URL (the store page).
+ */
+export function StoreButton({
   href,
   top,
   bottom,
+  comingSoon = defaultLabels.comingSoon,
   icon,
-}: {
-  href: string;
-  top: string;
-  bottom: string;
-  icon: React.ReactNode;
-}) {
+}: StoreButtonLabels & { href: string; icon: React.ReactNode }) {
   const live = href.length > 0;
   return (
     <a
       href={live ? href : "#download"}
       target={live ? "_blank" : undefined}
       rel={live ? "noopener noreferrer" : undefined}
-      aria-label={live ? `${top} ${bottom}` : `${bottom}, coming soon`}
-      className="group relative flex min-w-[178px] items-center gap-3 overflow-hidden rounded-2xl border border-white/15 bg-white/[0.06] px-4 py-2.5 text-left backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-400/60 hover:bg-white/10"
+      aria-disabled={live ? undefined : true}
+      aria-label={live ? `${top} ${bottom}` : `${bottom}, ${comingSoon.toLowerCase()}`}
+      className={`group relative flex min-w-[178px] items-center gap-3 overflow-hidden rounded-2xl border border-white/15 bg-white/[0.06] px-4 py-2.5 text-left backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-400/60 hover:bg-white/10 ${
+        live ? "" : "opacity-70"
+      }`}
     >
       <span className="text-ivory">{icon}</span>
       <span className="leading-tight">
-        <span className="block text-[10px] tracking-[0.14em] text-mist uppercase">{live ? top : "Coming soon on"}</span>
+        <span className="block text-[10px] tracking-[0.14em] text-mist uppercase">{live ? top : comingSoon}</span>
         <span className="block text-[17px] font-semibold text-ivory">{bottom}</span>
       </span>
       <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
@@ -49,11 +63,35 @@ function StoreButton({
   );
 }
 
+export function AppStoreButton({ href, labels }: { href: string; labels?: Partial<StoreButtonLabels> }) {
+  return (
+    <StoreButton
+      href={href}
+      top={labels?.top ?? "Download on the"}
+      bottom={labels?.bottom ?? "App Store"}
+      comingSoon={labels?.comingSoon ?? defaultLabels.comingSoon}
+      icon={<AppleGlyph />}
+    />
+  );
+}
+
+export function PlayStoreButton({ href, labels }: { href: string; labels?: Partial<StoreButtonLabels> }) {
+  return (
+    <StoreButton
+      href={href}
+      top={labels?.top ?? "Get it on"}
+      bottom={labels?.bottom ?? "Google Play"}
+      comingSoon={labels?.comingSoon ?? defaultLabels.comingSoon}
+      icon={<PlayGlyph />}
+    />
+  );
+}
+
 export function StoreButtons({ className = "" }: { className?: string }) {
   return (
     <div className={`flex flex-wrap items-center gap-3 ${className}`}>
-      <StoreButton href={site.appStoreUrl} top="Download on the" bottom="App Store" icon={<AppleGlyph />} />
-      <StoreButton href={site.playStoreUrl} top="Get it on" bottom="Google Play" icon={<PlayGlyph />} />
+      <AppStoreButton href={site.appStoreUrl} />
+      <PlayStoreButton href={site.playStoreUrl} />
     </div>
   );
 }
