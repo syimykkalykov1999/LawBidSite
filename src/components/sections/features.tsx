@@ -69,7 +69,7 @@ export function Features() {
                 >
                   <div>
                     <div className="text-[11px] text-mist">New bid · {a}</div>
-                    <div className="text-sm text-ivory">Verified attorney</div>
+                    <div className="text-sm text-ivory">Attorney bid</div>
                   </div>
                   <span className="font-semibold text-mint">{p}</span>
                 </div>
@@ -242,8 +242,8 @@ export function Features() {
         <SpotlightCard className="p-7 md:col-span-3">
           <CardText
             icon={<SealCheck size={22} weight="light" />}
-            title="License verification"
-            body="Attorneys verify their license and list the states and practice areas they cover. Verified profiles carry the badge."
+            title="License checks"
+            body="Attorneys enter their bar license and the states and practice areas they cover. The badge shows what matched the public registry; check with the state bar before you hire."
           />
         </SpotlightCard>
         <SpotlightCard className="p-7 md:col-span-3" delay={0.1}>

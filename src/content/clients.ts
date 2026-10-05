@@ -9,7 +9,7 @@ export const clientSteps: readonly { title: string; body: string }[] = [
   },
   {
     title: "Publish for free",
-    body: "Verified attorneys who cover that practice area and state see your case in their feed. Your contact details stay private.",
+    body: "Attorneys who cover that practice area and state see your case in their feed. Your contact details stay private.",
   },
   {
     title: "Compare the bids",
@@ -39,8 +39,8 @@ export const clientBenefits: readonly { title: string; body: string }[] = [
     body: "Compare fixed fees, hourly rates and free consultations side by side before you decide.",
   },
   {
-    title: "Verified licenses",
-    body: "Attorneys verify their license and the states they practice in. Look for the blue badge.",
+    title: "Licenses you can check",
+    body: "Attorneys state their bar license and the states they practice in. The blue badge shows what matched the public registry; the profile links to the state bar so you can confirm it yourself.",
   },
   {
     title: "Reviews you can trust",

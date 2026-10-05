@@ -111,7 +111,7 @@ export function FeedScreen() {
             <div className="flex items-center gap-[4px] text-[14px] font-semibold text-app-text">
               Sarah Klein <Verified />
             </div>
-            <div className="text-[11px] text-app-muted">Licensed Attorney</div>
+            <div className="text-[11px] text-app-muted">Attorney · Registry match</div>
           </div>
           <span className="flex h-[36px] items-center gap-[4px] rounded-full bg-white px-[16px] text-[14px] font-semibold text-app-bg">
             <UserPlus size={20} weight="light" /> Follow

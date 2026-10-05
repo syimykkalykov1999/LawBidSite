@@ -15,7 +15,7 @@ export const featureSections: readonly FeatureSection[] = [
     id: "bids",
     eyebrow: "Cases and bids",
     title: "Post once. Compare every offer.",
-    body: "Describe your situation in one of 42 practice categories. Verified attorneys who cover your state send bids with a price, a start date and how they would handle it.",
+    body: "Describe your situation in one of 42 practice categories. Attorneys who cover your state send bids with a price, a start date and how they would handle it.",
     bullets: [
       "Add photos and documents to your case",
       "Set a budget, or leave it to clarify later",
@@ -32,7 +32,7 @@ export const featureSections: readonly FeatureSection[] = [
     bullets: [
       "Topics for every practice area, plus News",
       "Like, comment, share and save",
-      "Verified attorneys carry the badge",
+      "Registry-checked attorneys carry the badge",
     ],
     screen: "feed",
   },
@@ -78,7 +78,7 @@ export const featureSections: readonly FeatureSection[] = [
     title: "Everything you need to trust an attorney.",
     body: "Profiles show the firm, practice areas, licensed states and languages, with posts, legal news and reviews one tap away.",
     bullets: [
-      "Verified license badge",
+      "License badge with trust level, linked to the state bar",
       "Reviews with photos, confirmed by a shared case",
       "Attorneys can reply to reviews publicly",
     ],

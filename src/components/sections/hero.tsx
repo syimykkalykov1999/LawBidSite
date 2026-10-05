@@ -146,8 +146,8 @@ export function Hero() {
             transition={{ delay: 1.1, duration: 0.8 }}
             className="mt-6 max-w-xl text-base text-balance text-mist sm:text-lg"
           >
-            Post your case for free. Verified attorneys send transparent bids. Compare, chat and hire the right one, all
-            in one app.
+            Post your case for free. Independent attorneys send transparent bids. Compare, chat and hire the right one,
+            all in one app.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -177,7 +177,7 @@ export function Hero() {
           title="Attorneys bid"
           icon={<Gavel size={18} weight="light" />}
         >
-          Verified attorneys in your practice area send offers with their price and approach.
+          Attorneys in your practice area send offers with their price and approach.
         </Caption>
         <BidCards progress={progress} />
         <Caption

@@ -31,5 +31,5 @@ export const site = {
   supportEmail: email(process.env.NEXT_PUBLIC_SUPPORT_EMAIL, "support@lawbid.dev"),
   tagline: "Post your case. Attorneys bid. You choose.",
   description:
-    "LawBid is the legal marketplace where clients post their case for free and licensed US attorneys compete with transparent bids. Compare, chat, call and hire in one app.",
+    "LawBid is the legal marketplace where clients post their case for free and independent US attorneys compete with transparent bids. Compare, chat, call and hire in one app.",
 } as const;

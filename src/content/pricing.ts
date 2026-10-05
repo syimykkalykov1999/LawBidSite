@@ -62,7 +62,7 @@ export const comparison: readonly {
   { feature: "Chat, voice notes, files and calls", client: true, monthly: true, prime: true },
   { feature: "Reviews and ratings", client: true, monthly: true, prime: true },
   { feature: "Bid on cases in your areas and states", client: false, monthly: "Unlimited", prime: "Unlimited" },
-  { feature: "Verified license badge", client: false, monthly: true, prime: true },
+  { feature: "License badge with trust level", client: false, monthly: true, prime: true },
   { feature: "Profile, posts and news", client: false, monthly: true, prime: true },
   { feature: "Planner and tasks", client: false, monthly: true, prime: true },
   {

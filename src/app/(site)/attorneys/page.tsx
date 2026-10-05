@@ -99,7 +99,7 @@ export default function AttorneysPage() {
       <FeatureRow
         eyebrow="Profile"
         title="A profile that does the selling."
-        body="Your verified badge, firm, practice areas, licensed states and languages, plus posts, legal news and reviews. Clients see all of it before they accept your bid."
+        body="Your license badge, firm, practice areas, licensed states and languages, plus posts, legal news and reviews. Clients see all of it before they accept your bid."
         bullets={[
           "Posts and legal news in the feed",
           "Reviews confirmed by shared cases",

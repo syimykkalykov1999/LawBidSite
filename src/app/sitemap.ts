@@ -18,6 +18,8 @@ const routes = [
   "/privacy",
   "/cookies",
   "/sms-consent",
+  "/dmca",
+  "/accessibility",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
