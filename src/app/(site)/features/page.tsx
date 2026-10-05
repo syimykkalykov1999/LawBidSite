@@ -11,7 +11,7 @@ import { featureSections, safetyFeatures } from "@/content/features";
 export const metadata: Metadata = {
   title: "Features",
   description:
-    "Cases and bids, a feed of legal posts, chat with voice notes and calls, verified profiles with reviews, and a planner for attorneys and their teams.",
+    "Cases and bids, a feed of legal posts, chat with voice notes and calls, attorney profiles with license badges and reviews, and a planner for attorneys and their teams.",
   alternates: { canonical: "/features" },
 };
 

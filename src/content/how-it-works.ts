@@ -12,7 +12,7 @@ export const flows: Record<"client" | "attorney", Step[]> = {
     {
       screen: "bids",
       title: "Receive bids",
-      body: "Verified attorneys who cover that area and state send offers with their price, when they can start and how they would handle it. You can counter-offer.",
+      body: "Attorneys who cover that area and state send offers with their price, when they can start and how they would handle it. You can counter-offer.",
     },
     {
       screen: "profile",
@@ -28,8 +28,8 @@ export const flows: Record<"client" | "attorney", Step[]> = {
   attorney: [
     {
       screen: "verify",
-      title: "Verify your license",
-      body: "Licensed attorney or an attorney's assistant: add your license, the states you cover and your practice areas. Clients see a verified badge next to your name.",
+      title: "Add your license",
+      body: "Attorney or an attorney's assistant: add your bar license, the states you cover and your practice areas. Once your bar number matches the public registry, clients see a badge next to your name.",
     },
     {
       screen: "cases",

@@ -17,7 +17,7 @@ import { withBase } from "@/lib/site";
 export const metadata: Metadata = {
   title: "For clients",
   description:
-    "Post your legal case for free and let verified attorneys bid. Compare prices and profiles, talk in the app and hire with confidence.",
+    "Post your legal case for free and let independent attorneys bid. Compare prices and profiles, talk in the app and hire with confidence.",
   alternates: { canonical: "/clients" },
 };
 
@@ -46,7 +46,7 @@ export default function ClientsPage() {
             Post your case. <span className="text-gold-gradient italic">Let attorneys come to you.</span>
           </>
         }
-        lead="Describe your situation once, for free. Verified attorneys send their price and approach, and you choose the one that fits."
+        lead="Describe your situation once, for free. Independent attorneys send their price and approach, and you choose the one that fits."
         visual={<Phone screen="bids" width={290} />}
       >
         <ButtonLink href="/download">Post a case for free</ButtonLink>

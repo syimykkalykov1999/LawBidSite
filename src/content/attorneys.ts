@@ -4,8 +4,8 @@ export const attorneySteps: readonly { title: string; body: string }[] = [
     body: "Download the app and choose the attorney role. Assistants join through their attorney's team.",
   },
   {
-    title: "Verify your license",
-    body: "Add your bar license and the states you are admitted in. Verified profiles get the blue badge.",
+    title: "Add your license",
+    body: "Enter your bar number and the states you are admitted in. Profiles that match the public registry get the blue badge.",
   },
   {
     title: "Choose your practice",

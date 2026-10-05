@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 const steps = [
   { title: "Install LawBid", body: "Download the app from the App Store or Google Play." },
-  { title: "Choose your role", body: "Sign up as a client, or as an attorney and verify your license." },
+  { title: "Choose your role", body: "Sign up as a client, or as an attorney and add your bar license." },
   { title: "Post or bid", body: "Clients post a case for free. Attorneys open the Cases tab and send bids." },
 ];
 

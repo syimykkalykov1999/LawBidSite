@@ -10,7 +10,7 @@ export const faqGroups: readonly FaqGroup[] = [
     items: [
       {
         q: "What is LawBid?",
-        a: "LawBid is a mobile app where people post their legal case for free and licensed attorneys send bids with their price and approach. You compare the offers, talk to the attorneys and hire the one that fits.",
+        a: "LawBid is a mobile app where people post their legal case for free and independent attorneys send bids with their price and approach. You compare the offers, talk to the attorneys and hire the one that fits.",
       },
       {
         q: "Is LawBid a law firm?",
@@ -18,7 +18,7 @@ export const faqGroups: readonly FaqGroup[] = [
       },
       {
         q: "Where is LawBid available?",
-        a: "LawBid works with licensed attorneys in the United States. The app is available in English and Russian, on iPhone and Android.",
+        a: "LawBid works with independent attorneys in the United States who state the bar licenses they hold. The app is available in English and Russian, on iPhone and Android.",
       },
       {
         q: "Which areas of law are covered?",
@@ -44,7 +44,7 @@ export const faqGroups: readonly FaqGroup[] = [
       },
       {
         q: "How do I know an attorney is real?",
-        a: "Attorneys verify their license and list the states and practice areas they cover. Verified profiles show a badge, and you can read reviews, their posts and their answers before hiring.",
+        a: "Attorneys enter their bar license and list the states and practice areas they cover. The badge next to a name shows what LawBid has been able to check against the public registry so far; licenses are self-declared, so confirm them with the state bar before hiring. You can also read reviews, posts and answers before you decide.",
       },
       {
         q: "Can I leave a review?",
@@ -58,7 +58,7 @@ export const faqGroups: readonly FaqGroup[] = [
     items: [
       {
         q: "I am an attorney. How do I join?",
-        a: "Download the app, choose the attorney role, verify your license and pick your practice areas and states. Matching cases appear in the Cases tab of your feed and you can start bidding.",
+        a: "Download the app, choose the attorney role, add your license and pick your practice areas and states. Matching cases appear in the Cases tab of your feed and you can start bidding.",
       },
       {
         q: "Can my assistants use LawBid too?",

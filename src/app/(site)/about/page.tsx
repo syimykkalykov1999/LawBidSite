@@ -14,7 +14,11 @@ export const metadata: Metadata = {
 
 const principles = [
   { Icon: Eye, title: "Transparency", body: "Prices, profiles and reviews are visible before anyone commits." },
-  { Icon: ShieldCheck, title: "Verification", body: "Attorneys verify their license and the states they practice in." },
+  {
+    Icon: ShieldCheck,
+    title: "License checks",
+    body: "Attorneys state their license and the states they practice in; LawBid checks it against public registries where it can.",
+  },
   { Icon: Scales, title: "Fair competition", body: "Attorneys win clients on merit and price, not on ad budgets." },
   { Icon: HandCoins, title: "Free for people", body: "Clients never pay to post a case or to receive offers." },
 ];

@@ -21,7 +21,7 @@ const topics = [
   {
     Icon: Briefcase,
     title: "Attorneys and firms",
-    body: "Verification, subscriptions, assistant teams and onboarding a firm.",
+    body: "License checks, subscriptions, assistant teams and onboarding a firm.",
     subject: "Attorney onboarding",
   },
   {
