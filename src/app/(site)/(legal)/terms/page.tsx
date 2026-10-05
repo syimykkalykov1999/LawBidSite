@@ -32,9 +32,39 @@ export default function Terms() {
         suspended or is revoked. We record the time, IP address and version of the statement you accepted.
       </p>
       <p>
-        LawBid does not independently check this information with state bars or courts. Attorney licenses shown in the
-        app are self-declared, and the attorney alone is responsible for their accuracy. Clients should confirm an
-        attorney&apos;s license with the relevant state bar before hiring them.
+        Attorney licenses shown in the app are self-declared, and the attorney alone is responsible for their accuracy.
+        Clients should confirm an attorney&apos;s license with the relevant state bar before hiring them; the app links
+        to the public registry of each state where one exists.
+      </p>
+      <h3>Trust levels</h3>
+      <p>
+        Next to each attorney the app shows a trust level that says what LawBid has been able to confirm so far. It is
+        an indicator, not a guarantee, a certification or legal advice:
+      </p>
+      <ul>
+        <li>
+          <strong>Self-declared</strong> (level 0): only the attorney&apos;s own statement about their license.
+        </li>
+        <li>
+          <strong>Registry</strong> (level 1): the bar number and the name matched the public record of the state bar or
+          court at the time of an automatic check, or a member of our staff confirmed the license by hand.
+        </li>
+        <li>
+          <strong>Identity</strong> (level 2): the attorney&apos;s payment account passed the identity verification of
+          our payment processor (Stripe) and the legal name on it matched the profile and the registry, or the attorney
+          proved a link to the law firm whose account receives payments.
+        </li>
+        <li>
+          <strong>Documents</strong> (level 3): in addition, our staff reviewed the attorney&apos;s bar card and a
+          government ID.
+        </li>
+      </ul>
+      <p>
+        A check reflects the sources available on the day it ran; registries and licenses change, and automatic
+        comparisons can be wrong. LawBid does not warrant that an attorney at any level is who they say they are, is in
+        good standing or will perform. In-app payments are available only to attorneys who reached the level set in our
+        platform rules, and LawBid may pause an attorney&apos;s bids or payments, delay their payouts or suspend the
+        account when a complaint, a name mismatch, a duplicate license claim or a registry difference needs review.
       </p>
       <p>
         Anyone can report an account they believe is false. We may then ask the attorney for a government ID, a selfie
