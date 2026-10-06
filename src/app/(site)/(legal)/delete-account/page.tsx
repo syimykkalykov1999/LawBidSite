@@ -34,7 +34,10 @@ export default function DeleteAccount() {
       <h2>Without the app</h2>
       <p>
         Email{" "}
-        <a href={`mailto:${site.supportEmail}?subject=Delete%20my%20LawBid%20account`} className="text-gold-300 underline">
+        <a
+          href={`mailto:${site.supportEmail}?subject=Delete%20my%20LawBid%20account`}
+          className="text-gold-300 underline"
+        >
           {site.supportEmail}
         </a>{" "}
         from the email address on your account, or tell us the phone number you sign in with. We confirm the request
