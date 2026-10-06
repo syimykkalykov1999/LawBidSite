@@ -46,6 +46,7 @@ export const footerNav: readonly { title: string; links: readonly NavLink[] }[] 
     links: [
       { href: "/terms", label: "Terms of Service" },
       { href: "/privacy", label: "Privacy Policy" },
+      { href: "/delete-account", label: "Delete Your Account" },
       { href: "/client-agreement", label: "Client Agreement" },
       { href: "/attorney-agreement", label: "Attorney Agreement" },
       { href: "/eula", label: "App License (EULA)" },
