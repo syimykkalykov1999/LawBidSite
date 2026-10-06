@@ -16,6 +16,7 @@ const routes = [
   "/download",
   "/terms",
   "/privacy",
+  "/delete-account",
   "/client-agreement",
   "/attorney-agreement",
   "/eula",
