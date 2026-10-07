@@ -5,6 +5,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Accessibility",
   description: "LawBid's accessibility statement and how to report a barrier.",
+  alternates: { canonical: "/accessibility" },
 };
 
 export default function Accessibility() {

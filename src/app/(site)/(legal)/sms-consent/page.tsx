@@ -5,6 +5,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "SMS Verification Consent",
   description: "How LawBid users consent to receive one-time verification codes by SMS.",
+  alternates: { canonical: "/sms-consent" },
 };
 
 const sampleMessages = [

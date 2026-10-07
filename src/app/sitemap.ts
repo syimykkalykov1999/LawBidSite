@@ -28,6 +28,8 @@ const routes = [
   "/accessibility",
 ];
 
+// No lastModified: the site rebuilds every 6 hours, and a date that changes on every
+// build without the page changing teaches Google to ignore it.
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routes.map((p) => ({ url: `${site.url}${p}`, lastModified: new Date() }));
+  return routes.map((p) => ({ url: `${site.url}${p}` }));
 }

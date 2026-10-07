@@ -1,5 +1,6 @@
 import type { FaqItem } from "@/content/faq";
 import { plans } from "@/content/pricing";
+import { company } from "@/lib/company";
 import { site } from "@/lib/site";
 
 /** Serializes JSON-LD safely: "<" is escaped so content can never close the script tag. */
@@ -21,9 +22,18 @@ export function StructuredData() {
           "@context": "https://schema.org",
           "@type": "Organization",
           name: site.name,
+          legalName: company.legalName,
           url: site.url,
           logo: `${site.url}/images/lawbid-icon.png`,
           email: site.supportEmail,
+        }}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: site.name,
+          url: site.url,
         }}
       />
       <JsonLd

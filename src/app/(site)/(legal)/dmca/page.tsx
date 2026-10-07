@@ -6,6 +6,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Copyright (DMCA) Policy",
   description: "How to send a copyright takedown notice or counter-notice to LawBid.",
+  alternates: { canonical: "/dmca" },
 };
 
 export default function Dmca() {
