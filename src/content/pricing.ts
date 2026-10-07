@@ -8,6 +8,11 @@ export const MONTHLY_PRICE = prices.monthlyCents / 100;
 export const YEARLY_PRICE = prices.yearlyCents / 100;
 export const MAX_SEATS = prices.maxSeats;
 export const TRIAL_DAYS = prices.trialDays;
+
+/** Owner 2026-10-07: «$99 / ~~$149~~ month −33%», set in the admin. */
+export type Discount = { compareAtCents: number; percent: number } | null;
+const discountOf = (d: unknown): Discount =>
+  d && typeof d === "object" && "compareAtCents" in d && "percent" in d ? (d as Discount) : null;
 const yearlySavings = (MONTHLY_PRICE + SEAT_PRICE * MAX_SEATS) * 12 - YEARLY_PRICE;
 
 export const usd = (n: number) =>
@@ -18,6 +23,7 @@ export const plans = {
     name: "Monthly",
     price: MONTHLY_PRICE,
     period: "month",
+    discount: discountOf(prices.monthlyDiscount),
     note: `Plus ${usd(SEAT_PRICE)} a month for each assistant, up to ${MAX_SEATS}.`,
     seats: `Assistants at ${usd(SEAT_PRICE)} a month each, up to ${MAX_SEATS}`,
   },
@@ -25,6 +31,7 @@ export const plans = {
     name: "Prime",
     price: YEARLY_PRICE,
     period: "year",
+    discount: discountOf(prices.yearlyDiscount),
     note: `The yearly plan. Saves ${usd(yearlySavings)} compared with Monthly and ${MAX_SEATS} assistants.`,
     seats: `All ${MAX_SEATS} assistant seats included`,
   },
