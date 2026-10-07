@@ -7,7 +7,10 @@ import { Attorneys } from "@/components/sections/attorneys";
 import { Pricing } from "@/components/sections/pricing";
 import { Download } from "@/components/sections/download";
 import { Faq } from "@/components/sections/faq";
+import type { Metadata } from "next";
 import { StructuredData } from "@/components/seo/structured-data";
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 export default function Home() {
   return (

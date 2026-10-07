@@ -5,7 +5,7 @@ import { LegalPage } from "@/components/ui/legal-page";
 import { company, legalVersion } from "@/lib/company";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = { title: "Cookie Policy" };
+export const metadata: Metadata = { title: "Cookie Policy", alternates: { canonical: "/cookies" } };
 
 const items = [
   {

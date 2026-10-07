@@ -3,7 +3,7 @@ import Link from "next/link";
 import { LegalPage } from "@/components/ui/legal-page";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = { title: "Privacy Policy" };
+export const metadata: Metadata = { title: "Privacy Policy", alternates: { canonical: "/privacy" } };
 
 const retention: readonly { data: string; period: string }[] = [
   {
