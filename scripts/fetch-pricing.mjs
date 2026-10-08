@@ -13,6 +13,7 @@ if (!url) {
 }
 
 const KEYS = ["monthlyCents", "seatCents", "yearlyCents", "maxSeats", "trialDays"];
+const DISCOUNTS = ["monthlyDiscount", "yearlyDiscount"];
 
 try {
   const res = await fetch(url, { signal: AbortSignal.timeout(10_000) });
@@ -23,6 +24,15 @@ try {
   const next = { ...current };
   for (const k of KEYS) {
     if (Number.isInteger(p?.[k]) && p[k] > 0) next[k] = p[k];
+  }
+  // Owner 2026-10-07: the strikethrough old price; the API sends null
+  // unless it is a real discount (old price above today's).
+  for (const k of DISCOUNTS) {
+    const d = p?.[k];
+    next[k] =
+      d && Number.isInteger(d.compareAtCents) && Number.isInteger(d.percent) && d.percent > 0
+        ? { compareAtCents: d.compareAtCents, percent: d.percent }
+        : null;
   }
   writeFileSync(file, `${JSON.stringify(next, null, 2)}\n`);
   console.log("[pricing] prices from the API:", JSON.stringify(next));

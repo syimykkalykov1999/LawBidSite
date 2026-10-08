@@ -6,7 +6,7 @@ import { Check, Crown, UserCircle } from "@phosphor-icons/react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import Link from "next/link";
 import { MoreLink } from "@/components/ui/button-link";
-import { billingFacts, clientFeatures, plans, proFeatures } from "@/content/pricing";
+import { billingFacts, clientFeatures, plans, proFeatures, usd } from "@/content/pricing";
 
 type Billing = "monthly" | "yearly";
 
@@ -23,6 +23,7 @@ function Price({ value }: { value: number }) {
 export function Pricing({ heading = true }: { heading?: boolean }) {
   const [billing, setBilling] = useState<Billing>("monthly");
   const yearly = billing === "yearly";
+  const discount = yearly ? plans.yearly.discount : plans.monthly.discount;
 
   return (
     <section id="pricing" className={`relative px-5 ${heading ? "py-28 sm:py-36" : "pb-16"}`}>
@@ -114,7 +115,19 @@ export function Pricing({ heading = true }: { heading?: boolean }) {
             <span className="font-serif text-6xl text-ivory">
               <Price value={yearly ? plans.yearly.price : plans.monthly.price} />
             </span>
-            <span className="mb-2 text-mist">/{yearly ? "year" : "month"}</span>
+            {discount ? (
+              <span className="mb-2 flex flex-wrap items-center gap-2 text-mist">
+                <span>
+                  / <s className="decoration-[1.5px]">{usd(discount.compareAtCents / 100)}</s>{" "}
+                  {yearly ? "year" : "month"}
+                </span>
+                <span className="rounded-full bg-gold-400 px-2 py-0.5 text-xs font-semibold text-ink-950">
+                  −{discount.percent}%
+                </span>
+              </span>
+            ) : (
+              <span className="mb-2 text-mist">/{yearly ? "year" : "month"}</span>
+            )}
           </div>
           <div className="relative mt-1 text-sm text-mist">{yearly ? plans.yearly.note : plans.monthly.note}</div>
           <ul className="relative mt-8 space-y-3">

@@ -3,5 +3,7 @@
   "seatCents": 10000,
   "yearlyCents": 959000,
   "maxSeats": 6,
-  "trialDays": 7
+  "trialDays": 7,
+  "monthlyDiscount": null,
+  "yearlyDiscount": null
 }
