@@ -22,6 +22,7 @@ export const footerNav: readonly { title: string; links: readonly NavLink[] }[] 
     links: [
       { href: "/features", label: "Features" },
       { href: "/practice-areas", label: "Practice areas" },
+      { href: "/lawyers", label: "Find a lawyer by state" },
       { href: "/pricing", label: "Pricing" },
       { href: "/download", label: "Download the app" },
     ],

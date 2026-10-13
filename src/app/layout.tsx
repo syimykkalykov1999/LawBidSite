@@ -19,7 +19,26 @@ export const metadata: Metadata = {
   title: { default: `${site.name} — ${site.tagline}`, template: `%s · ${site.name}` },
   description: site.description,
   applicationName: site.name,
-  keywords: ["lawyer", "attorney", "legal help", "legal marketplace", "hire a lawyer", "legal bids"],
+  keywords: [
+    "lawyer",
+    "attorney",
+    "find a lawyer",
+    "hire a lawyer",
+    "lawyer near me",
+    "legal help",
+    "free consultation",
+    "legal marketplace",
+    "lawyer bids",
+    "divorce lawyer",
+    "DUI lawyer",
+    "immigration lawyer",
+    "personal injury lawyer",
+    "criminal defense lawyer",
+  ],
+  // Smart App Banner on iPhone Safari; set NEXT_PUBLIC_APP_STORE_ID (the numeric App Store ID) once the app is live.
+  ...(/^\d{6,12}$/.test(process.env.NEXT_PUBLIC_APP_STORE_ID ?? "")
+    ? { itunes: { appId: process.env.NEXT_PUBLIC_APP_STORE_ID as string } }
+    : {}),
   openGraph: {
     type: "website",
     siteName: site.name,
