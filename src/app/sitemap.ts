@@ -1,4 +1,7 @@
 import type { MetadataRoute } from "next";
+import { practiceAreas } from "@/content/practice-areas";
+import { stateLandingAreas } from "@/content/seo-landing";
+import { states } from "@/content/states";
 import { site } from "@/lib/site";
 
 export const dynamic = "force-static";
@@ -9,6 +12,7 @@ const routes = [
   "/attorneys",
   "/features",
   "/practice-areas",
+  "/lawyers",
   "/pricing",
   "/faq",
   "/about",
@@ -31,5 +35,10 @@ const routes = [
 // No lastModified: the site rebuilds every 6 hours, and a date that changes on every
 // build without the page changing teaches Google to ignore it.
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routes.map((p) => ({ url: `${site.url}${p}` }));
+  const landing = [
+    ...practiceAreas.map((a) => `/practice-areas/${a.slug}`),
+    ...states.map((s) => `/lawyers/${s.slug}`),
+    ...states.flatMap((s) => stateLandingAreas.map((a) => `/lawyers/${s.slug}/${a.slug}`)),
+  ];
+  return [...routes, ...landing].map((p) => ({ url: `${site.url}${p}` }));
 }
