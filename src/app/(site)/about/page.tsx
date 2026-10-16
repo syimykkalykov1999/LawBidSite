@@ -5,6 +5,15 @@ import { ButtonLink } from "@/components/ui/button-link";
 import { Reveal } from "@/components/ui/reveal";
 import { Download } from "@/components/sections/download";
 import { practiceAreaCount } from "@/content/practice-areas";
+import { Hero } from "@/components/sections/hero";
+import { PracticeMarquee } from "@/components/sections/practice-marquee";
+import { Statement } from "@/components/sections/statement";
+import { HowItWorks } from "@/components/sections/how-it-works";
+import { Features } from "@/components/sections/features";
+import { Attorneys } from "@/components/sections/attorneys";
+import { Pricing } from "@/components/sections/pricing";
+import { Faq } from "@/components/sections/faq";
+import { StructuredData } from "@/components/seo/structured-data";
 
 export const metadata: Metadata = {
   title: "About",
@@ -30,9 +39,20 @@ const numbers = [
   ["$0", "for clients, always"],
 ] as const;
 
+// Owner 2026-10-16: the web app took the domain root (lawbid.dev); the
+// landing lives on here, followed by the company story.
 export default function AboutPage() {
   return (
     <>
+      <Hero />
+      <PracticeMarquee />
+      <Statement />
+      <HowItWorks />
+      <Features />
+      <Attorneys />
+      <Pricing />
+      <Faq />
+      <StructuredData />
       <PageHero
         eyebrow="About LawBid"
         title={
