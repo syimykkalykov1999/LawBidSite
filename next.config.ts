@@ -2,6 +2,9 @@ import type { NextConfig } from "next";
 
 const isDev = process.env.NODE_ENV === "development";
 const isStaticExport = process.env.STATIC_EXPORT === "1";
+// TRAILING_SLASH=1: one folder per page (about/index.html), for hosts that
+// do not map /about to about.html (the LawBid web bucket on lawbid.dev).
+const trailingSlash = process.env.TRAILING_SLASH === "1";
 // Sub-path the site is served from, e.g. "/LawBidSite" on a GitHub Pages project site.
 // Empty at a domain root. Keep in sync with src/lib/site.ts.
 const basePath = /^\/[\w.-]+$/.test(process.env.NEXT_PUBLIC_BASE_PATH ?? "")
@@ -48,6 +51,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   devIndicators: false,
+  ...(trailingSlash ? { trailingSlash: true } : {}),
   ...(basePath ? { basePath } : {}),
   // STATIC_EXPORT=1 next build writes a plain static site to out/ for any static host.
   // Static hosts ignore headers() below, so set the same headers in the host's config.
