@@ -5,11 +5,13 @@ import { Providers } from "@/components/layout/providers";
 import { site, withBase } from "@/lib/site";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin", "cyrillic"], variable: "--font-inter", display: "swap" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const sourceSerif = Source_Serif_4({
-  subsets: ["latin", "cyrillic"],
+  subsets: ["latin"],
   style: ["normal", "italic"],
   axes: ["opsz"],
+  // Headings only: not worth a preload slot on a slow link.
+  preload: false,
   variable: "--font-source-serif",
   display: "swap",
 });
