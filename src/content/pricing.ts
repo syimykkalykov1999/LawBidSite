@@ -8,6 +8,11 @@ export const MONTHLY_PRICE = prices.monthlyCents / 100;
 export const YEARLY_PRICE = prices.yearlyCents / 100;
 export const MAX_SEATS = prices.maxSeats;
 export const TRIAL_DAYS = prices.trialDays;
+/** The client's verified-badge price (admin: verification.client_badge_cents); shown nowhere yet. */
+export const CLIENT_BADGE_PRICE = prices.clientBadgeCents / 100;
+/** "Start 7 days free" — the one wording for the trial, from the admin's trial length. */
+export const TRIAL_CTA = `Start ${TRIAL_DAYS} days free`;
+export const TRIAL_LINE = `${TRIAL_DAYS} days free for verified attorneys`;
 
 /** Owner 2026-10-07: «$99 / ~~$149~~ month −33%», set in the admin. */
 export type Discount = { compareAtCents: number; percent: number } | null;
@@ -53,7 +58,7 @@ export const clientFeatures: readonly string[] = [
 ];
 
 export const billingFacts: readonly string[] = [
-  `${TRIAL_DAYS} days free for verified attorneys`,
+  TRIAL_LINE,
   "Pay on the secure Stripe page",
   "Cancel anytime, access stays until the period ends",
 ];

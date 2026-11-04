@@ -1,4 +1,4 @@
-import { MAX_SEATS, MONTHLY_PRICE, SEAT_PRICE, YEARLY_PRICE, usd } from "./pricing";
+import { MAX_SEATS, MONTHLY_PRICE, SEAT_PRICE, TRIAL_DAYS, YEARLY_PRICE, usd } from "./pricing";
 
 export type FaqItem = { q: string; a: string };
 export type FaqGroup = { id: string; title: string; items: readonly FaqItem[] };
@@ -62,7 +62,7 @@ export const faqGroups: readonly FaqGroup[] = [
       },
       {
         q: "Can my assistants use LawBid too?",
-        a: "Yes. Add up to 6 assistants to your team and choose what each one can do: answer calls and chats, send files, prepare bid drafts and posts for your approval, and work on tasks in the planner.",
+        a: `Yes. Add up to ${MAX_SEATS} assistants to your team and choose what each one can do: answer calls and chats, send files, prepare bid drafts and posts for your approval, and work on tasks in the planner.`,
       },
       {
         q: "Do you take a commission on my fees?",
@@ -84,7 +84,7 @@ export const faqGroups: readonly FaqGroup[] = [
       },
       {
         q: "Is there a free trial?",
-        a: "Yes. Verified attorneys get 7 days free before the first charge.",
+        a: `Yes. Verified attorneys get ${TRIAL_DAYS} days free before the first charge.`,
       },
       {
         q: "How do I pay and cancel?",

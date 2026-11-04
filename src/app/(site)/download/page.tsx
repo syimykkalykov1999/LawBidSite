@@ -3,11 +3,11 @@ import { PageHero } from "@/components/ui/page-hero";
 import { StoreButtons } from "@/components/ui/store-buttons";
 import { Reveal } from "@/components/ui/reveal";
 import { Phone } from "@/components/phone/phone";
-import { TRIAL_DAYS } from "@/content/pricing";
+import { TRIAL_LINE } from "@/content/pricing";
 
 export const metadata: Metadata = {
   title: "Download the app",
-  description: "Get LawBid on iPhone and Android. Free for clients, 7 days free for verified attorneys.",
+  description: `Get LawBid on iPhone and Android. Free for clients, ${TRIAL_LINE}.`,
   alternates: { canonical: "/download" },
 };
 
@@ -17,12 +17,7 @@ const steps = [
   { title: "Post or bid", body: "Clients post a case for free. Attorneys open the Cases tab and send bids." },
 ];
 
-const facts = [
-  "Free for clients",
-  `${TRIAL_DAYS} days free for verified attorneys`,
-  "English and Russian",
-  "Dark and light themes",
-];
+const facts = ["Free for clients", TRIAL_LINE, "English and Russian", "Dark and light themes"];
 
 export default function DownloadPage() {
   return (
