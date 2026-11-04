@@ -55,7 +55,7 @@ src/
 public/images/            app icon and the 42 practice area photos (WebP)
 ```
 
-To change text or prices, edit `src/content/`. Prices must match the app's subscription settings.
+To change text, edit `src/content/`. Prices are NOT edited here: `scripts/fetch-pricing.mjs` pulls them from the LawBid admin (`PRICING_API_URL`, GET `/pricing`) before every build; `src/content/pricing.json` is only the fallback when the API cannot be reached. `npm test` fails on any hard-coded price.
 
 ## Publishing on GitHub Pages
 

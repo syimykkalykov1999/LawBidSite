@@ -6,7 +6,7 @@ import { Check, Crown, UserCircle } from "@phosphor-icons/react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import Link from "next/link";
 import { MoreLink } from "@/components/ui/button-link";
-import { billingFacts, clientFeatures, plans, proFeatures, usd } from "@/content/pricing";
+import { TRIAL_CTA, billingFacts, clientFeatures, plans, proFeatures, usd } from "@/content/pricing";
 
 type Billing = "monthly" | "yearly";
 
@@ -141,7 +141,7 @@ export function Pricing({ heading = true }: { heading?: boolean }) {
             href="/attorneys"
             className="relative mt-10 block rounded-[14px] bg-ivory py-3.5 text-center font-semibold text-ink-950 transition-transform hover:scale-[1.02]"
           >
-            Start 7 days free
+            {TRIAL_CTA}
           </Link>
         </motion.div>
       </div>

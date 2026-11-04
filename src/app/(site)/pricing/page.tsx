@@ -9,7 +9,7 @@ import {
   MAX_SEATS,
   MONTHLY_PRICE,
   SEAT_PRICE,
-  TRIAL_DAYS,
+  TRIAL_LINE,
   YEARLY_PRICE,
   comparison,
   plans,
@@ -19,7 +19,7 @@ import { faqGroups } from "@/content/faq";
 
 export const metadata: Metadata = {
   title: "Pricing",
-  description: `Free for clients. Attorneys pay ${usd(MONTHLY_PRICE)} a month plus ${usd(SEAT_PRICE)} per assistant, or ${usd(YEARLY_PRICE)} a year for Prime with ${MAX_SEATS} assistants included. ${TRIAL_DAYS} days free for verified attorneys.`,
+  description: `Free for clients. Attorneys pay ${usd(MONTHLY_PRICE)} a month plus ${usd(SEAT_PRICE)} per assistant, or ${usd(YEARLY_PRICE)} a year for Prime with ${MAX_SEATS} assistants included. ${TRIAL_LINE}.`,
   alternates: { canonical: "/pricing" },
 };
 

@@ -18,12 +18,11 @@ import { Phone } from "@/components/phone/phone";
 import { Download } from "@/components/sections/download";
 import { assistantDuties, attorneySteps } from "@/content/attorneys";
 import { faqGroups } from "@/content/faq";
-import { MAX_SEATS, TRIAL_DAYS, plans, usd } from "@/content/pricing";
+import { MAX_SEATS, TRIAL_CTA, TRIAL_LINE, plans, usd } from "@/content/pricing";
 
 export const metadata: Metadata = {
   title: "For attorneys",
-  description:
-    "Get real cases in your practice areas and states, bid with your own fee, and run your practice with a planner and an assistant team. 7 days free for verified attorneys.",
+  description: `Get real cases in your practice areas and states, bid with your own fee, and run your practice with a planner and an assistant team. ${TRIAL_LINE}.`,
   alternates: { canonical: "/attorneys" },
 };
 
@@ -47,7 +46,7 @@ export default function AttorneysPage() {
         lead="No ads, no directories, no commission. People with real cases post them on LawBid, and you decide which ones to bid on."
         visual={<Phone screen="inbox" width={290} />}
       >
-        <ButtonLink href="/download">Start {TRIAL_DAYS} days free</ButtonLink>
+        <ButtonLink href="/download">{TRIAL_CTA}</ButtonLink>
         <ButtonLink href="/pricing" variant="secondary">
           See pricing
         </ButtonLink>
@@ -155,8 +154,7 @@ export default function AttorneysPage() {
           <div>
             <h2 className="font-serif text-4xl leading-tight text-ivory sm:text-5xl">One flat plan. No commission.</h2>
             <p className="mt-4 text-lg text-mist">
-              {TRIAL_DAYS} days free for verified attorneys, then pay monthly or yearly on Stripe&apos;s secure page.
-              Cancel anytime.
+              {TRIAL_LINE}, then pay monthly or yearly on Stripe&apos;s secure page. Cancel anytime.
             </p>
             <div className="mt-6">
               <MoreLink href="/pricing">Compare plans</MoreLink>

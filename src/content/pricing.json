@@ -1,9 +1,24 @@
 {
-  "monthlyCents": 39900,
-  "seatCents": 10000,
-  "yearlyCents": 959000,
-  "maxSeats": 6,
+  "monthlyCents": 9900,
+  "seatCents": 2000,
+  "yearlyCents": 149900,
+  "maxSeats": 10,
   "trialDays": 7,
-  "monthlyDiscount": null,
-  "yearlyDiscount": null
+  "clientBadgeCents": 1000,
+  "monthlyDiscount": {
+    "compareAtCents": 19900,
+    "percent": 50
+  },
+  "seatDiscount": {
+    "compareAtCents": 10000,
+    "percent": 80
+  },
+  "yearlyDiscount": {
+    "compareAtCents": 299900,
+    "percent": 50
+  },
+  "clientBadgeDiscount": {
+    "compareAtCents": 2000,
+    "percent": 50
+  }
 }
