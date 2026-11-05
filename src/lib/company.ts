@@ -6,7 +6,6 @@ export const company = {
   doingBusinessAs: "LawBid",
   entityType: "Illinois limited liability company",
   state: "Illinois",
-  registrationNumber: "14558764",
   /** Owner must replace this before launch; it is shown verbatim on the site. */
   postalAddress: "[postal address — to be filled in by owner]",
   email: site.supportEmail,
