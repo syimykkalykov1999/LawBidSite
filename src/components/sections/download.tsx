@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "motion/react";
+import * as m from "motion/react-m";
+import { REVEAL_OFFSET, revealTransition, revealViewport } from "@/lib/motion";
 import { Phone, type ScreenId } from "@/components/phone/phone";
 import { StoreButtons } from "@/components/ui/store-buttons";
 import { LogoMark } from "@/components/ui/logo";
@@ -8,11 +9,11 @@ import { LogoMark } from "@/components/ui/logo";
 export function Download({ screen = "bids" }: { screen?: ScreenId }) {
   return (
     <section id="download" className="relative px-5 py-28 sm:py-36">
-      <motion.div
-        initial={{ opacity: 0, y: 60, scale: 0.97 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+      <m.div
+        initial={{ opacity: 0, y: REVEAL_OFFSET }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={revealViewport}
+        transition={revealTransition()}
         className="grain relative mx-auto grid max-w-6xl items-center gap-10 overflow-hidden rounded-[40px] border border-gold-400/20 bg-gradient-to-br from-ink-800 via-ink-900 to-ink-950 px-8 py-14 sm:px-14 lg:grid-cols-[1.2fr_1fr]"
       >
         <div className="glow-gold absolute -top-56 -right-56 h-[36rem] w-[36rem]" />
@@ -36,7 +37,7 @@ export function Download({ screen = "bids" }: { screen?: ScreenId }) {
             </div>
           </div>
         </div>
-      </motion.div>
+      </m.div>
     </section>
   );
 }

@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "motion/react";
+import * as m from "motion/react-m";
+import { REVEAL_OFFSET, revealTransition, revealViewport } from "@/lib/motion";
 import {
   Briefcase,
   CalendarCheck,
@@ -51,17 +52,17 @@ export function Attorneys() {
           />
           <ul className="mt-8 space-y-3">
             {perks.map((p, i) => (
-              <motion.li
+              <m.li
                 key={p}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -REVEAL_OFFSET }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 * i }}
+                viewport={revealViewport}
+                transition={revealTransition(0.05 * i)}
                 className="flex items-start gap-3 text-ivory"
               >
                 <CheckCircle size={22} weight="fill" className="mt-0.5 shrink-0 text-gold-400" />
                 {p}
-              </motion.li>
+              </m.li>
             ))}
           </ul>
           <Link
@@ -104,11 +105,11 @@ export function Attorneys() {
           <div className="absolute inset-0 m-auto grid h-28 w-28 place-items-center rounded-full border border-gold-400/40 bg-gradient-to-br from-ink-700 to-ink-900 shadow-[0_0_80px_rgba(201,162,74,0.35)] sm:h-36 sm:w-36">
             <Gavel size={56} weight="light" className="text-gold-300" />
           </div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+          <m.div
+            initial={{ opacity: 0, y: REVEAL_OFFSET }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5 }}
+            viewport={revealViewport}
+            transition={revealTransition(0.15)}
             className="absolute right-0 bottom-[14%] hidden items-center gap-3 rounded-2xl border border-white/10 bg-ink-850/95 px-4 py-3 shadow-2xl sm:flex"
           >
             <ChatsCircle size={20} className="text-mint" />
@@ -116,12 +117,12 @@ export function Attorneys() {
               <div className="text-xs text-mist">Bid accepted</div>
               <div className="text-sm font-medium text-ivory">Offer accepted · $1,500</div>
             </div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+          </m.div>
+          <m.div
+            initial={{ opacity: 0, y: REVEAL_OFFSET }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.8 }}
+            viewport={revealViewport}
+            transition={revealTransition(0.25)}
             className="absolute top-[12%] left-0 hidden items-center gap-3 rounded-2xl border border-white/10 bg-ink-850/95 px-4 py-3 shadow-2xl sm:flex"
           >
             <CalendarCheck size={20} className="text-gold-300" />
@@ -129,7 +130,7 @@ export function Attorneys() {
               <div className="text-xs text-mist">Tomorrow, 11:00</div>
               <div className="text-sm font-medium text-ivory">Mediation session</div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

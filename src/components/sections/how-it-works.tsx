@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "motion/react";
+import { useInView } from "motion/react";
+import * as m from "motion/react-m";
+import { REVEAL_OFFSET, revealTransition, revealViewport } from "@/lib/motion";
 import { Phone } from "@/components/phone/phone";
 import { MoreLink } from "@/components/ui/button-link";
 import { flows, type Step } from "@/content/how-it-works";
@@ -37,7 +39,7 @@ export function HowItWorks() {
               className={`relative z-10 rounded-full px-6 py-2.5 text-sm font-medium transition-colors ${role === r ? "text-ink-950" : "text-mist hover:text-ivory"}`}
             >
               {role === r && (
-                <motion.span
+                <m.span
                   layoutId="role-pill"
                   className="absolute inset-0 -z-10 rounded-full bg-gold-400"
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
@@ -97,11 +99,11 @@ function StepBlock({
 
   return (
     <div ref={ref} className="flex flex-col justify-center py-10 lg:min-h-[80svh] lg:py-0">
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
+      <m.div
+        initial={{ opacity: 0, y: REVEAL_OFFSET }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.7 }}
+        viewport={revealViewport}
+        transition={revealTransition()}
         className={`transition-opacity duration-500 ${isActive ? "lg:opacity-100" : "lg:opacity-40"}`}
       >
         <span className="font-serif text-7xl text-gold-400/30 italic">0{index + 1}</span>
@@ -110,7 +112,7 @@ function StepBlock({
         <div className="mt-8 flex justify-center lg:hidden">
           <Phone screen={step.screen} width={252} />
         </div>
-      </motion.div>
+      </m.div>
     </div>
   );
 }

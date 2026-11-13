@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useTransform, type MotionValue } from "motion/react";
+import { useTransform, type MotionValue } from "motion/react";
+import * as m from "motion/react-m";
 
 const PIVOT_X = 400;
 const PIVOT_Y = 200;
@@ -51,11 +52,11 @@ export function Scales({ angle, progress }: Props) {
       </defs>
 
       {/* Halo that flares when the scales come to balance */}
-      <motion.circle cx={PIVOT_X} cy={PIVOT_Y + 40} r="300" fill="url(#halo)" style={{ opacity: balance }} />
+      <m.circle cx={PIVOT_X} cy={PIVOT_Y + 40} r="300" fill="url(#halo)" style={{ opacity: balance }} />
 
       {/* Pillar */}
       <g>
-        <motion.rect
+        <m.rect
           x="393"
           y="200"
           width="14"
@@ -65,36 +66,36 @@ export function Scales({ angle, progress }: Props) {
           style={{ originY: 1 }}
           initial={{ scaleY: 0 }}
           animate={{ scaleY: 1 }}
-          transition={{ duration: 1.4, ease: [0.65, 0, 0.35, 1] }}
+          transition={{ duration: 0.7, ease: [0.65, 0, 0.35, 1] }}
         />
-        <motion.path
+        <m.path
           d="M300 690 Q400 650 500 690 Z M330 662 L470 662 L490 690 L310 690 Z"
           fill="url(#metal)"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
+          transition={{ duration: 0.45, delay: 0.15 }}
         />
         <rect x="280" y="688" width="240" height="14" rx="7" fill="url(#metal)" />
         <rect x="386" y="610" width="28" height="56" rx="6" fill="url(#metal-v)" />
         {/* Finial */}
-        <motion.g
+        <m.g
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 1.1, type: "spring", stiffness: 160, damping: 12 }}
+          transition={{ delay: 0.55, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
           style={{ originX: "400px", originY: "160px" }}
         >
           <path d="M400 128 L414 158 L400 172 L386 158 Z" fill="url(#metal)" />
           <circle cx="400" cy="200" r="16" fill="url(#metal)" />
           <circle cx="400" cy="200" r="6" fill="#0a1a3f" opacity="0.5" />
-        </motion.g>
+        </m.g>
       </g>
 
       {/* Beam, symmetric around the pivot so it rotates about it */}
-      <motion.g
+      <m.g
         style={{ rotate: angle, transformBox: "view-box", transformOrigin: `${PIVOT_X}px ${PIVOT_Y}px` }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.8 }}
+        transition={{ delay: 0.4, duration: 0.4 }}
       >
         <path
           d={`M${PIVOT_X - ARM} 200 Q400 176 ${PIVOT_X + ARM} 200 Q400 188 ${PIVOT_X - ARM} 200 Z`}
@@ -105,16 +106,16 @@ export function Scales({ angle, progress }: Props) {
         <circle cx={PIVOT_X + ARM} cy="200" r="10" fill="url(#metal)" />
         <circle cx={PIVOT_X - 120} cy="200" r="4" fill="#f1e3b8" />
         <circle cx={PIVOT_X + 120} cy="200" r="4" fill="#f1e3b8" />
-      </motion.g>
+      </m.g>
 
       {/* Left pan: the client's case file */}
       <g transform={`translate(${PIVOT_X - ARM} ${PIVOT_Y})`}>
-        <motion.g style={{ x: leftX, y: leftY }}>
+        <m.g style={{ x: leftX, y: leftY }}>
           <Pan label="Law" />
-          <motion.g
-            initial={{ opacity: 0, y: -30 }}
+          <m.g
+            initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.4, duration: 0.8 }}
+            transition={{ delay: 0.7, duration: 0.4 }}
           >
             <g transform="translate(-34 92) rotate(-6)">
               <rect width="68" height="84" rx="6" fill="#f3efe3" />
@@ -127,20 +128,20 @@ export function Scales({ angle, progress }: Props) {
               <circle cx="52" cy="70" r="9" fill="#b08a2e" />
               <circle cx="52" cy="70" r="5" fill="none" stroke="#f1e3b8" strokeWidth="1.5" />
             </g>
-          </motion.g>
-        </motion.g>
+          </m.g>
+        </m.g>
       </g>
 
       {/* Right pan: attorneys' bids drop in as coins */}
       <g transform={`translate(${PIVOT_X + ARM} ${PIVOT_Y})`}>
-        <motion.g style={{ x: rightX, y: rightY }}>
+        <m.g style={{ x: rightX, y: rightY }}>
           <Pan label="Bid" />
           <Coin progress={progress} start={0.16} x={-46} y={152} />
           <Coin progress={progress} start={0.24} x={46} y={152} />
           <Coin progress={progress} start={0.32} x={0} y={150} />
           <Coin progress={progress} start={0.4} x={-22} y={118} />
           <Coin progress={progress} start={0.46} x={24} y={118} />
-        </motion.g>
+        </m.g>
       </g>
     </svg>
   );
@@ -176,8 +177,8 @@ function Coin({ progress, start, x, y }: { progress: MotionValue<number>; start:
   const spin = useTransform(progress, [start, start + 0.07], [1, 0.25]);
   const scaleX = useTransform(spin, (s) => Math.max(0.35, Math.abs(Math.cos(s * Math.PI * 3))));
   return (
-    <motion.g style={{ x, y: cy, opacity }}>
-      <motion.g style={{ scaleX }}>
+    <m.g style={{ x, y: cy, opacity }}>
+      <m.g style={{ scaleX }}>
         <circle r="20" fill="url(#metal)" stroke="#8e6f26" strokeWidth="2" />
         <circle r="14" fill="none" stroke="#f7ecc9" strokeOpacity="0.7" strokeWidth="1.5" />
         <text
@@ -190,7 +191,7 @@ function Coin({ progress, start, x, y }: { progress: MotionValue<number>; start:
         >
           $
         </text>
-      </motion.g>
-    </motion.g>
+      </m.g>
+    </m.g>
   );
 }

@@ -1,15 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import {
-  motion,
-  useMotionValue,
-  useReducedMotion,
-  useScroll,
-  useSpring,
-  useTransform,
-  type MotionValue,
-} from "motion/react";
+import { useMotionValue, useReducedMotion, useScroll, useSpring, useTransform, type MotionValue } from "motion/react";
+import * as m from "motion/react-m";
 import { ArrowDown, FileText, Gavel, SealCheck, Star } from "@phosphor-icons/react";
 import { Scales } from "@/components/illustrations/scales";
 import { seeded } from "@/lib/random";
@@ -66,7 +59,7 @@ export function Hero() {
         {/* Background */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,#10255a_0%,#0a1a3f_45%,#0b0b0d_100%)]" />
         <div className="grid-lines absolute inset-0" />
-        <motion.div
+        <m.div
           className="glow-gold absolute top-[38%] left-1/2 h-[90vmin] w-[90vmin] -translate-x-1/2 -translate-y-1/2 will-change-[opacity]"
           style={{ opacity: glowOpacity }}
         />
@@ -87,11 +80,11 @@ export function Hero() {
         </div>
 
         {/* Scales */}
-        <motion.div
+        <m.div
           className="absolute inset-0 flex items-center justify-center [perspective:1200px]"
           style={{ opacity: sceneOpacity }}
         >
-          <motion.div
+          <m.div
             className="h-[min(78vh,92vw)] w-[min(82vh,96vw)] will-change-transform"
             style={{ y: scalesY, scale: scalesScale, rotateX: rotX, rotateY: rotY }}
           >
@@ -99,64 +92,38 @@ export function Hero() {
             <div className="h-full w-full animate-float-slow">
               <Scales angle={angle} progress={progress} />
             </div>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
 
         {/* Headline */}
-        <motion.div
+        <m.div
           style={{ opacity: headlineOpacity, y: headlineY }}
           className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 pt-28 text-center sm:pt-32"
         >
-          <motion.span
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-gold-400/30 bg-gold-400/10 px-3.5 py-1.5 text-xs font-medium tracking-wide text-gold-300"
-          >
+          {/* Headline, lead and store buttons render in their final state in the HTML,
+              so the largest text paints with the first frame (no fade-in, no blur). */}
+          <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-gold-400/30 bg-gold-400/10 px-3.5 py-1.5 text-xs font-medium tracking-wide text-gold-300">
             <Gavel size={14} weight="light" /> The legal marketplace where attorneys compete for you
-          </motion.span>
+          </span>
           <h1 className="font-serif text-[clamp(2.8rem,8vw,6.6rem)] leading-[0.95] tracking-[-0.02em] text-ivory">
             {["Justice,", "weighed"].map((w, i) => (
-              <motion.span
-                key={w}
-                className={`mr-[0.25em] inline-block ${i === 1 ? "text-gold-gradient italic" : ""}`}
-                initial={{ opacity: 0, y: 40, filter: "blur(12px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ delay: 0.35 + i * 0.15, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-              >
+              <span key={w} className={`mr-[0.25em] inline-block ${i === 1 ? "text-gold-gradient italic" : ""}`}>
                 {w}
-              </motion.span>
+              </span>
             ))}
             <br />
-            {["in", "your", "favor."].map((w, i) => (
-              <motion.span
-                key={w}
-                className="mr-[0.25em] inline-block"
-                initial={{ opacity: 0, y: 40, filter: "blur(12px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ delay: 0.65 + i * 0.12, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-              >
+            {["in", "your", "favor."].map((w) => (
+              <span key={w} className="mr-[0.25em] inline-block">
                 {w}
-              </motion.span>
+              </span>
             ))}
           </h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.1, duration: 0.8 }}
-            className="mt-6 max-w-xl text-base text-balance text-mist sm:text-lg"
-          >
+          <p className="mt-6 max-w-xl text-base text-balance text-mist sm:text-lg">
             Post your case for free. Independent attorneys send transparent bids. Compare, chat and hire the right one,
             all in one app.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.3, duration: 0.8 }}
-          >
-            <StoreButtons className="mt-8 justify-center" />
-          </motion.div>
-        </motion.div>
+          </p>
+          <StoreButtons className="mt-8 justify-center" />
+        </m.div>
 
         {/* Story captions */}
         <Caption
@@ -191,15 +158,15 @@ export function Hero() {
           Compare profiles, ratings and fees side by side, then hire with confidence.
         </Caption>
 
-        <motion.div
+        <m.div
           style={{ opacity: hintOpacity }}
           className="absolute inset-x-0 bottom-6 z-10 flex flex-col items-center gap-2 text-xs text-mist"
         >
           <span className="tracking-[0.2em] uppercase">Scroll to weigh it</span>
-          <motion.span animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.6 }}>
+          <m.span animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.6 }}>
             <ArrowDown size={16} />
-          </motion.span>
-        </motion.div>
+          </m.span>
+        </m.div>
       </div>
     </section>
   );
@@ -231,7 +198,7 @@ function Caption({
         ? "md:right-[6%] md:left-auto md:top-[22%] md:bottom-auto"
         : "md:right-[6%] md:left-auto md:top-1/2 md:-translate-y-1/2 md:bottom-auto";
   return (
-    <motion.div
+    <m.div
       style={{ opacity, y }}
       className={`pointer-events-none absolute inset-x-4 bottom-[6%] z-20 mx-auto max-w-sm md:inset-x-auto md:mx-0 md:w-[340px] ${pos}`}
     >
@@ -243,7 +210,7 @@ function Caption({
         <h3 className="font-serif text-3xl text-ivory">{title}</h3>
         <p className="mt-2 text-sm leading-relaxed text-mist">{children}</p>
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -280,7 +247,7 @@ function BidCard({
     .map((p) => p[0])
     .join("");
   return (
-    <motion.div
+    <m.div
       style={{ opacity, x }}
       className="flex items-center gap-3 rounded-2xl border border-white/10 bg-ink-850/95 p-3"
     >
@@ -294,6 +261,6 @@ function BidCard({
         </div>
       </div>
       <span className="rounded-lg bg-mint/15 px-2 py-1 text-sm font-semibold whitespace-nowrap text-mint">{price}</span>
-    </motion.div>
+    </m.div>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence } from "motion/react";
+import * as m from "motion/react-m";
 import {
   CasesScreen,
   ChatScreen,
@@ -99,7 +100,7 @@ export function Phone({
           aria-hidden="true"
         >
           <AnimatePresence mode="popLayout" initial={false}>
-            <motion.div
+            <m.div
               key={screen}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -111,7 +112,7 @@ export function Phone({
               <div className="relative flex min-h-0 flex-1 flex-col">
                 <Screen id={screen} />
               </div>
-            </motion.div>
+            </m.div>
           </AnimatePresence>
           <div className="absolute top-[11px] left-1/2 z-10 h-[36px] w-[124px] -translate-x-1/2 rounded-full bg-black" />
           <div className="absolute bottom-[8px] left-1/2 z-10 h-[5px] w-[134px] -translate-x-1/2 rounded-full bg-white/80" />
