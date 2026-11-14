@@ -14,7 +14,10 @@
 4. **«Открыть в приложении»** — ссылка `lawbid://referral/КОД`. Срабатывает, если приложение уже стоит.
 5. **Когда будут собраны магазинные сборки**, можно включить «настоящие» deep links (Android App Links
    и iOS Universal Links): тогда ссылка `https://lawbid.dev/r/КОД` будет открывать приложение сразу,
-   минуя сайт. Для этого нужны два файла в `public/.well-known/`, они уже лежат там как шаблоны.
+   минуя сайт. Оба файла `/.well-known/` (D1-48, 13.11) собирает только репозиторий LawBid:
+   `scripts/seo/well-known.mjs` в `seo-deploy.yml`. В этом репозитории их нет и класть их сюда нельзя:
+   при сборке сайта папка `.well-known` в публикацию не попадает, а проверка в `seo-deploy.yml`
+   роняет выкладку, если в `assetlinks.json` стоит заглушка.
 
 ## Что заполнить после появления сборок
 
@@ -24,35 +27,16 @@
   Как только там стоит число, кнопка App Store на странице-приглашении включается сама.
 - `ANDROID_PACKAGE` уже `com.lawbid.lawbid`; менять только если поменяется applicationId.
 
-### `public/.well-known/assetlinks.json` (Android App Links)
+### `/.well-known/assetlinks.json` и `/.well-known/apple-app-site-association`
 
-Заменить `REPLACE_WITH_SHA256` на SHA-256 отпечаток ключа, которым **подписана сборка в Google Play**.
-Если включена подпись Google Play App Signing (обычно да), берётся отпечаток из
-Play Console → Setup → App signing → «App signing key certificate» → SHA-256.
-Формат: `AA:BB:CC:...` (32 пары через двоеточие, заглавные). Можно указать несколько отпечатков
-(например ещё и ключ отладочной сборки) — это массив.
-
-Для локальной сборки отпечаток смотрится так:
-
-```
-keytool -list -v -keystore путь/к/keystore.jks -alias алиас | grep SHA256
-```
-
-В Android-приложении (`apps/mobile/android/app/src/main/AndroidManifest.xml`) должен быть intent-filter
-с `android:autoVerify="true"` на `https` + `lawbid.dev` + `pathPrefix="/r/"`, а также схема `lawbid`
-для `lawbid://referral/...`.
-
-### `public/.well-known/apple-app-site-association` (iOS Universal Links)
-
-Заменить `TEAMID` на Team ID из Apple Developer (10 символов, например `A1B2C3D4E5`). Bundle id
-`com.lawbid.lawbid` менять, только если iOS bundle id другой. В Xcode у приложения должна быть
-capability Associated Domains со строкой `applinks:lawbid.dev`.
+Генерирует `scripts/seo/well-known.mjs` в репозитории LawBid. Отпечатки SHA-256 для Android
+владелец ставит в переменную репозитория LawBid `ANDROID_APP_SHA256` (через запятую: ключ подписи
+Google Play и ключ загрузки). Без неё `assetlinks.json` не публикуется вовсе.
 
 ## Как это раздаётся сайтом
 
-- Всё из `public/` при `STATIC_EXPORT=1 npm run build` копируется в `out/` как есть, включая папку
-  `.well-known` и файл без расширения — проверено, после сборки файлы лежат в
-  `out/.well-known/assetlinks.json` и `out/.well-known/apple-app-site-association`.
+- Файлы `/.well-known/` выкладывает `seo-deploy.yml` репозитория LawBid в тот же бакет, что и сайт
+  (с `Content-Type: application/json`); сайт свою папку `.well-known` не публикует.
 - `public/.nojekyll` (пустой файл) — страховка: при деплое через GitHub Actions Jekyll не запускается,
   но если когда-нибудь переключиться на деплой из ветки, без этого файла Jekyll выбросит все пути,
   начинающиеся с точки, и `.well-known` пропадёт.
