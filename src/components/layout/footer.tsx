@@ -31,7 +31,7 @@ export function Footer() {
           </nav>
         ))}
       </div>
-      <div className="mx-auto mt-16 max-w-6xl border-t border-white/5 pt-6 text-xs leading-relaxed text-mist/70">
+      <div className="mx-auto mt-16 max-w-6xl border-t border-white/5 pt-6 text-xs leading-relaxed text-mist">
         <p>
           LawBid is a technology platform, not a law firm, and does not provide legal advice. Attorneys on LawBid are
           independent professionals responsible for their own services.

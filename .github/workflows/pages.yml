@@ -42,6 +42,8 @@ jobs:
           NEXT_PUBLIC_SUPPORT_EMAIL: ${{ vars.NEXT_PUBLIC_SUPPORT_EMAIL }}
           # e.g. https://api.lawbid.dev/api/v1/pricing once the API is public.
           PRICING_API_URL: ${{ vars.PRICING_API_URL }}
+          # D1-50/51: the API base (…/api/v1); the privacy page is the admin's published text.
+          LEGAL_API_URL: ${{ vars.LEGAL_API_URL }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out
