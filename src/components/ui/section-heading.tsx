@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import * as m from "motion/react-m";
 
 export function SectionHeading({
   eyebrow,
@@ -14,7 +14,7 @@ export function SectionHeading({
   align?: "center" | "left";
 }) {
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
@@ -30,6 +30,6 @@ export function SectionHeading({
       {sub && (
         <p className={`mt-5 text-lg text-mist ${align === "center" ? "mx-auto" : ""} max-w-2xl text-balance`}>{sub}</p>
       )}
-    </motion.div>
+    </m.div>
   );
 }

@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { animate, motion, useMotionValue, useTransform } from "motion/react";
+import { animate, useMotionValue, useTransform } from "motion/react";
+import * as m from "motion/react-m";
 import { Check, Crown, UserCircle } from "@phosphor-icons/react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import Link from "next/link";
@@ -17,7 +18,7 @@ function Price({ value }: { value: number }) {
     const controls = animate(mv, value, { duration: 0.6, ease: [0.16, 1, 0.3, 1] });
     return () => controls.stop();
   }, [mv, value]);
-  return <motion.span>{text}</motion.span>;
+  return <m.span>{text}</m.span>;
 }
 
 export function Pricing({ heading = true }: { heading?: boolean }) {
@@ -49,7 +50,7 @@ export function Pricing({ heading = true }: { heading?: boolean }) {
               className={`relative z-10 rounded-full px-6 py-2.5 text-sm font-medium transition-colors ${billing === b ? "text-ink-950" : "text-mist hover:text-ivory"}`}
             >
               {billing === b && (
-                <motion.span
+                <m.span
                   layoutId="billing-pill"
                   className="absolute inset-0 -z-10 rounded-full bg-ivory"
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
@@ -62,7 +63,7 @@ export function Pricing({ heading = true }: { heading?: boolean }) {
       </div>
 
       <div className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-[1fr_1.25fr]">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -87,9 +88,9 @@ export function Pricing({ heading = true }: { heading?: boolean }) {
           >
             Post a case
           </Link>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -102,13 +103,13 @@ export function Pricing({ heading = true }: { heading?: boolean }) {
               <Crown size={22} weight="light" /> Attorney · {yearly ? plans.yearly.name : plans.monthly.name}
             </div>
             {yearly && (
-              <motion.span
+              <m.span
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="rounded-full bg-gold-400 px-3 py-1 text-xs font-semibold text-ink-950"
               >
                 6 assistants included
-              </motion.span>
+              </m.span>
             )}
           </div>
           <div className="relative mt-6 flex items-end gap-2">
@@ -143,7 +144,7 @@ export function Pricing({ heading = true }: { heading?: boolean }) {
           >
             {TRIAL_CTA}
           </Link>
-        </motion.div>
+        </m.div>
       </div>
       <ul className="mx-auto mt-8 flex max-w-5xl flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-mist">
         {billingFacts.map((f) => (

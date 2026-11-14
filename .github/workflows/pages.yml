@@ -1,14 +1,12 @@
 name: Deploy to GitHub Pages
 
-# Publishes the static site to GitHub Pages whenever main changes (or on demand).
-# One-time setup: Settings > Pages > Build and deployment > Source: GitHub Actions.
+# Publishes the static site to GitHub Pages on demand only.
+# Owner rows 122/147: Pages is not enabled for this repository, so the former
+# push and 6-hourly cron triggers failed on every run. The production site is
+# built by LawBid on Node 26; run this by hand only after enabling
+# Settings > Pages > Build and deployment > Source: GitHub Actions.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
-  # Picks up prices changed in the LawBid admin (scripts/fetch-pricing.mjs).
-  schedule:
-    - cron: "17 */6 * * *"
 
 permissions:
   contents: read
@@ -23,15 +21,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           cache: npm
       # Reads the Pages settings: base_path is "/LawBidSite" on the github.io address
       # and empty once a custom domain is set, so the same workflow works for both.
       - id: pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
       - run: npm ci
       - run: npm run build:static
         env:
@@ -44,7 +42,7 @@ jobs:
           PRICING_API_URL: ${{ vars.PRICING_API_URL }}
           # D1-50/51: the API base (…/api/v1); the privacy page is the admin's published text.
           LEGAL_API_URL: ${{ vars.LEGAL_API_URL }}
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: out
 
@@ -56,4 +54,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

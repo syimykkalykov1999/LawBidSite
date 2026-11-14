@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform, type MotionValue } from "motion/react";
+import { useScroll, useTransform, type MotionValue } from "motion/react";
+import * as m from "motion/react-m";
 
 const text =
   "No more cold calls. No more guessing what a lawyer costs. Post your case once and let qualified attorneys compete for it, openly and fairly.";
@@ -44,11 +45,11 @@ function Word({
   const opacity = useTransform(progress, range, [0.12, 1]);
   const y = useTransform(progress, range, [8, 0]);
   return (
-    <motion.span
+    <m.span
       style={{ opacity, y }}
       className={`mr-[0.28em] inline-block ${gold ? "text-gold-300 italic" : "text-ivory"}`}
     >
       {children}
-    </motion.span>
+    </m.span>
   );
 }
