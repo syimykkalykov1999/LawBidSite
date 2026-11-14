@@ -24,8 +24,7 @@ const bids = [
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
-  // Scroll progress drives everything directly. Lenis already smooths the wheel,
-  // so a second spring here would only add lag.
+  // Scroll progress drives everything directly (native scrolling, no extra spring).
   const { scrollYProgress: progress } = useScroll({ target: ref, offset: ["start start", "end end"] });
 
   // Story: the case weighs left, bids tip it right, then it settles in balance.
