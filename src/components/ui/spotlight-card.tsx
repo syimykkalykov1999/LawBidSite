@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { motion } from "motion/react";
+import * as m from "motion/react-m";
+import { REVEAL_OFFSET, revealTransition, revealViewport } from "@/lib/motion";
 
 export function SpotlightCard({
   className = "",
@@ -14,12 +15,12 @@ export function SpotlightCard({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   return (
-    <motion.div
+    <m.div
       ref={ref}
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: REVEAL_OFFSET }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
+      viewport={revealViewport}
+      transition={revealTransition(delay)}
       onPointerMove={(e) => {
         const el = ref.current;
         if (!el) return;
@@ -30,6 +31,6 @@ export function SpotlightCard({
       className={`spotlight-card overflow-hidden rounded-3xl ${className}`}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

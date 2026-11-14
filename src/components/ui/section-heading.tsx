@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "motion/react";
+import * as m from "motion/react-m";
+import { REVEAL_OFFSET, revealTransition, revealViewport } from "@/lib/motion";
 
 export function SectionHeading({
   eyebrow,
@@ -14,11 +15,11 @@ export function SectionHeading({
   align?: "center" | "left";
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
+    <m.div
+      initial={{ opacity: 0, y: REVEAL_OFFSET }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      viewport={revealViewport}
+      transition={revealTransition()}
       className={`${align === "center" ? "mx-auto text-center" : ""} max-w-3xl`}
     >
       <span className="mb-4 inline-flex items-center gap-2 text-xs font-medium tracking-[0.22em] text-gold-400 uppercase">
@@ -30,6 +31,6 @@ export function SectionHeading({
       {sub && (
         <p className={`mt-5 text-lg text-mist ${align === "center" ? "mx-auto" : ""} max-w-2xl text-balance`}>{sub}</p>
       )}
-    </motion.div>
+    </m.div>
   );
 }
