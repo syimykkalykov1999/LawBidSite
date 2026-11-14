@@ -3,7 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
+import { AnimatePresence, useMotionValueEvent, useScroll } from "motion/react";
+import * as m from "motion/react-m";
 import { List, X } from "@phosphor-icons/react";
 import { Logo } from "@/components/ui/logo";
 import { mainNav, moreNav } from "@/content/navigation";
@@ -21,7 +22,7 @@ export function Nav() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4">
-      <motion.nav
+      <m.nav
         aria-label="Main"
         initial={{ y: -40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -49,7 +50,7 @@ export function Nav() {
               >
                 {l.label}
                 {active && (
-                  <motion.span
+                  <m.span
                     layoutId="nav-active"
                     className="absolute inset-x-3 -bottom-0.5 h-px bg-gold-400"
                     transition={{ type: "spring", stiffness: 380, damping: 32 }}
@@ -78,10 +79,10 @@ export function Nav() {
             {open ? <X size={22} /> : <List size={22} />}
           </button>
         </div>
-      </motion.nav>
+      </m.nav>
       <AnimatePresence>
         {open && (
-          <motion.div
+          <m.div
             id="mobile-menu"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -108,7 +109,7 @@ export function Nav() {
             >
               Get the app
             </Link>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </header>

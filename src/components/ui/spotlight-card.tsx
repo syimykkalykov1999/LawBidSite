@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion } from "motion/react";
+import * as m from "motion/react-m";
 
 export function SpotlightCard({
   className = "",
@@ -14,7 +14,7 @@ export function SpotlightCard({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   return (
-    <motion.div
+    <m.div
       ref={ref}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -30,6 +30,6 @@ export function SpotlightCard({
       className={`spotlight-card overflow-hidden rounded-3xl ${className}`}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "motion/react";
+import * as m from "motion/react-m";
 import {
   Briefcase,
   CalendarCheck,
@@ -51,7 +51,7 @@ export function Attorneys() {
           />
           <ul className="mt-8 space-y-3">
             {perks.map((p, i) => (
-              <motion.li
+              <m.li
                 key={p}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -61,7 +61,7 @@ export function Attorneys() {
               >
                 <CheckCircle size={22} weight="fill" className="mt-0.5 shrink-0 text-gold-400" />
                 {p}
-              </motion.li>
+              </m.li>
             ))}
           </ul>
           <Link
@@ -104,7 +104,7 @@ export function Attorneys() {
           <div className="absolute inset-0 m-auto grid h-28 w-28 place-items-center rounded-full border border-gold-400/40 bg-gradient-to-br from-ink-700 to-ink-900 shadow-[0_0_80px_rgba(201,162,74,0.35)] sm:h-36 sm:w-36">
             <Gavel size={56} weight="light" className="text-gold-300" />
           </div>
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -116,8 +116,8 @@ export function Attorneys() {
               <div className="text-xs text-mist">Bid accepted</div>
               <div className="text-sm font-medium text-ivory">Offer accepted · $1,500</div>
             </div>
-          </motion.div>
-          <motion.div
+          </m.div>
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -129,7 +129,7 @@ export function Attorneys() {
               <div className="text-xs text-mist">Tomorrow, 11:00</div>
               <div className="text-sm font-medium text-ivory">Mediation session</div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

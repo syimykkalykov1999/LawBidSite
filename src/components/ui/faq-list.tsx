@@ -1,7 +1,8 @@
 "use client";
 
 import { useId, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence } from "motion/react";
+import * as m from "motion/react-m";
 import { Plus } from "@phosphor-icons/react";
 import type { FaqItem } from "@/content/faq";
 
@@ -25,17 +26,17 @@ export function FaqList({ items, defaultOpen = 0 }: { items: readonly FaqItem[];
                 className="flex w-full items-center justify-between gap-6 px-6 py-5 text-left sm:px-8"
               >
                 <span className={`text-lg transition-colors ${isOpen ? "text-gold-300" : "text-ivory"}`}>{f.q}</span>
-                <motion.span
+                <m.span
                   animate={{ rotate: isOpen ? 45 : 0 }}
                   className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-white/10 text-gold-300"
                 >
                   <Plus size={16} />
-                </motion.span>
+                </m.span>
               </button>
             </h3>
             <AnimatePresence initial={false}>
               {isOpen && (
-                <motion.div
+                <m.div
                   id={panelId}
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
@@ -44,7 +45,7 @@ export function FaqList({ items, defaultOpen = 0 }: { items: readonly FaqItem[];
                   className="overflow-hidden"
                 >
                   <p className="px-6 pb-6 leading-relaxed text-mist sm:px-8">{f.a}</p>
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
           </div>

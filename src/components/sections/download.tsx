@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import * as m from "motion/react-m";
 import { Phone, type ScreenId } from "@/components/phone/phone";
 import { StoreButtons } from "@/components/ui/store-buttons";
 import { LogoMark } from "@/components/ui/logo";
@@ -8,7 +8,7 @@ import { LogoMark } from "@/components/ui/logo";
 export function Download({ screen = "bids" }: { screen?: ScreenId }) {
   return (
     <section id="download" className="relative px-5 py-28 sm:py-36">
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 60, scale: 0.97 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -36,7 +36,7 @@ export function Download({ screen = "bids" }: { screen?: ScreenId }) {
             </div>
           </div>
         </div>
-      </motion.div>
+      </m.div>
     </section>
   );
 }
