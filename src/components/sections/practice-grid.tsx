@@ -2,6 +2,7 @@
 
 import { useDeferredValue, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { MagnifyingGlass } from "@phosphor-icons/react";
 import type { PracticeArea } from "@/content/practice-areas";
 import { withBase } from "@/lib/site";
@@ -51,7 +52,14 @@ export function PracticeGrid({ areas }: { areas: readonly PracticeArea[] }) {
                   unoptimized
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 to-transparent" />
-                <h2 className="absolute inset-x-5 bottom-3 font-serif text-2xl text-ivory">{a.name}</h2>
+                <h2 className="absolute inset-x-5 bottom-3 font-serif text-2xl text-ivory">
+                  <Link
+                    href={`/practice-areas/${a.slug}`}
+                    className="after:absolute after:inset-0 after:-top-[999px] hover:text-gold-200"
+                  >
+                    {a.name}
+                  </Link>
+                </h2>
               </div>
               <div className="flex flex-wrap gap-1.5 p-5">
                 {a.specialties.slice(0, 4).map((s) => (

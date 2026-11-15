@@ -81,3 +81,61 @@ export function FaqStructuredData({ items }: { items: readonly FaqItem[] }) {
     />
   );
 }
+
+/** Breadcrumb trail. Paths are site-relative ("/lawyers/texas"). */
+export function BreadcrumbStructuredData({ items }: { items: readonly { name: string; path: string }[] }) {
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: items.map((it, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: it.name,
+          item: `${site.url}${it.path}`,
+        })),
+      }}
+    />
+  );
+}
+
+/**
+ * The LawBid service for one practice area and, optionally, one state. LawBid is a marketplace, not
+ * a firm, so there is no address or "Attorney" markup here; individual attorneys are not listed.
+ */
+export function LegalServiceStructuredData({
+  name,
+  description,
+  path,
+  serviceType,
+  state,
+}: {
+  name: string;
+  description: string;
+  path: string;
+  serviceType?: string;
+  state?: string;
+}) {
+  return (
+    <JsonLd
+      data={{
+        "@context": "https://schema.org",
+        "@type": "LegalService",
+        name,
+        description,
+        url: `${site.url}${path}`,
+        image: `${site.url}/images/lawbid-icon.png`,
+        ...(serviceType ? { serviceType } : {}),
+        areaServed: state ? { "@type": "State", name: state } : { "@type": "Country", name: "United States" },
+        provider: { "@type": "Organization", name: site.name, url: site.url },
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+          description: "Posting a case is free for clients",
+        },
+      }}
+    />
+  );
+}
