@@ -1,7 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { LegalPage } from "@/components/ui/legal-page";
+import published from "@/content/legal/privacy.json";
+import { legalMarkdownToHtml } from "@/lib/markdown";
 import { site } from "@/lib/site";
+
+/** D1-50 / D1-51: the text published in the LawBid admin (the same one the
+ * app shows), written by scripts/fetch-legal.mjs before each build. */
+type PublishedLegal = { version: string; publishedAt: string | null; contentMd: string } | null;
+
+const longDate = (iso: string | null) =>
+  iso
+    ? new Date(iso).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" })
+    : "";
 
 export const metadata: Metadata = { title: "Privacy Policy", alternates: { canonical: "/privacy" } };
 
@@ -23,6 +34,20 @@ const retention: readonly { data: string; period: string }[] = [
 ];
 
 export default function Privacy() {
+  const doc = published as PublishedLegal;
+  if (doc) {
+    return (
+      <LegalPage title="Privacy Policy" updated={longDate(doc.publishedAt)} version={doc.version}>
+        <div dangerouslySetInnerHTML={{ __html: legalMarkdownToHtml(doc.contentMd) }} />
+      </LegalPage>
+    );
+  }
+  return <BuiltInPrivacy />;
+}
+
+/** Used only when the build could not reach the API and has no last known
+ * text (a local build without LEGAL_API_URL). */
+function BuiltInPrivacy() {
   return (
     <LegalPage title="Privacy Policy" updated="October 5, 2026">
       {/* Draft expanded 2026-10-05 for attorney review */}
@@ -178,6 +203,18 @@ export default function Privacy() {
       <p>
         Backups are overwritten on a rolling schedule within 30 days of deletion. We may keep records longer when a
         legal claim, an investigation or a legal obligation requires it.
+      </p>
+
+      <h2>Biometric information (attorney identity check)</h2>
+      <p>
+        This is our written policy for biometric information, including under the Illinois Biometric Information Privacy
+        Act (740 ILCS 14/15). When an attorney applies for verification and agrees on the selfie screen, we
+        automatically compare the selfie with the photo on their government ID (Amazon Rekognition, as our service
+        provider), only to confirm their identity. The selfie and ID pictures are permanently deleted right after the
+        final decision on the request; the comparison result is kept until the request is decided plus 30 days (or the
+        period set in the current in-app Privacy Policy), then deleted. In every case we destroy biometric information
+        when the purpose is met and no later than 3 years after your last interaction with us. We never sell or share it
+        except with our service provider, with your consent or as the law requires.
       </p>
 
       <h2>Your rights</h2>
