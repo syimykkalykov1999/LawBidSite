@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import * as m from "motion/react-m";
+import { REVEAL_OFFSET, revealTransition, revealViewport } from "@/lib/motion";
 import {
   Briefcase,
   CalendarCheck,
@@ -53,10 +54,10 @@ export function Attorneys() {
             {perks.map((p, i) => (
               <m.li
                 key={p}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -REVEAL_OFFSET }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 * i }}
+                viewport={revealViewport}
+                transition={revealTransition(0.05 * i)}
                 className="flex items-start gap-3 text-ivory"
               >
                 <CheckCircle size={22} weight="fill" className="mt-0.5 shrink-0 text-gold-400" />
@@ -105,10 +106,10 @@ export function Attorneys() {
             <Gavel size={56} weight="light" className="text-gold-300" />
           </div>
           <m.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: REVEAL_OFFSET }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5 }}
+            viewport={revealViewport}
+            transition={revealTransition(0.15)}
             className="absolute right-0 bottom-[14%] hidden items-center gap-3 rounded-2xl border border-white/10 bg-ink-850/95 px-4 py-3 shadow-2xl sm:flex"
           >
             <ChatsCircle size={20} className="text-mint" />
@@ -118,10 +119,10 @@ export function Attorneys() {
             </div>
           </m.div>
           <m.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: REVEAL_OFFSET }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.8 }}
+            viewport={revealViewport}
+            transition={revealTransition(0.25)}
             className="absolute top-[12%] left-0 hidden items-center gap-3 rounded-2xl border border-white/10 bg-ink-850/95 px-4 py-3 shadow-2xl sm:flex"
           >
             <CalendarCheck size={20} className="text-gold-300" />

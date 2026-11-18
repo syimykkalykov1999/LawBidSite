@@ -22,11 +22,9 @@ export function Nav() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4">
-      <m.nav
+      {/* No entrance animation: the bar is in the HTML from the first paint. */}
+      <nav
         aria-label="Main"
-        initial={{ y: -40, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={`flex w-full max-w-6xl items-center justify-between rounded-2xl px-4 py-2.5 transition-[background-color,border-color,box-shadow] duration-500 ${
           scrolled || open
             ? "border border-white/10 bg-ink-900/85 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.6)] backdrop-blur-md"
@@ -79,7 +77,7 @@ export function Nav() {
             {open ? <X size={22} /> : <List size={22} />}
           </button>
         </div>
-      </m.nav>
+      </nav>
       <AnimatePresence>
         {open && (
           <m.div
@@ -87,6 +85,7 @@ export function Nav() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="absolute inset-x-4 top-20 max-h-[calc(100svh-6rem)] overflow-y-auto rounded-2xl border border-white/10 bg-ink-900 p-3 md:hidden"
           >
             {[...mainNav, ...moreNav].map((l) => (

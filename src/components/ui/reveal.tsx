@@ -1,6 +1,7 @@
 "use client";
 
 import * as m from "motion/react-m";
+import { REVEAL_OFFSET, revealTransition, revealViewport } from "@/lib/motion";
 
 /** Fades content up once when it scrolls into view. Transform and opacity only. */
 export function Reveal({
@@ -14,10 +15,10 @@ export function Reveal({
 }) {
   return (
     <m.div
-      initial={{ opacity: 0, y: 28 }}
+      initial={{ opacity: 0, y: REVEAL_OFFSET }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
+      viewport={revealViewport}
+      transition={revealTransition(delay)}
       className={className}
     >
       {children}

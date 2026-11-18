@@ -100,55 +100,29 @@ export function Hero() {
           style={{ opacity: headlineOpacity, y: headlineY }}
           className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 pt-28 text-center sm:pt-32"
         >
-          <m.span
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-gold-400/30 bg-gold-400/10 px-3.5 py-1.5 text-xs font-medium tracking-wide text-gold-300"
-          >
+          {/* Headline, lead and store buttons render in their final state in the HTML,
+              so the largest text paints with the first frame (no fade-in, no blur). */}
+          <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-gold-400/30 bg-gold-400/10 px-3.5 py-1.5 text-xs font-medium tracking-wide text-gold-300">
             <Gavel size={14} weight="light" /> The legal marketplace where attorneys compete for you
-          </m.span>
+          </span>
           <h1 className="font-serif text-[clamp(2.8rem,8vw,6.6rem)] leading-[0.95] tracking-[-0.02em] text-ivory">
             {["Justice,", "weighed"].map((w, i) => (
-              <m.span
-                key={w}
-                className={`mr-[0.25em] inline-block ${i === 1 ? "text-gold-gradient italic" : ""}`}
-                initial={{ opacity: 0, y: 40, filter: "blur(12px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ delay: 0.35 + i * 0.15, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-              >
+              <span key={w} className={`mr-[0.25em] inline-block ${i === 1 ? "text-gold-gradient italic" : ""}`}>
                 {w}
-              </m.span>
+              </span>
             ))}
             <br />
-            {["in", "your", "favor."].map((w, i) => (
-              <m.span
-                key={w}
-                className="mr-[0.25em] inline-block"
-                initial={{ opacity: 0, y: 40, filter: "blur(12px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ delay: 0.65 + i * 0.12, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-              >
+            {["in", "your", "favor."].map((w) => (
+              <span key={w} className="mr-[0.25em] inline-block">
                 {w}
-              </m.span>
+              </span>
             ))}
           </h1>
-          <m.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.1, duration: 0.8 }}
-            className="mt-6 max-w-xl text-base text-balance text-mist sm:text-lg"
-          >
+          <p className="mt-6 max-w-xl text-base text-balance text-mist sm:text-lg">
             Post your case for free. Independent attorneys send transparent bids. Compare, chat and hire the right one,
             all in one app.
-          </m.p>
-          <m.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.3, duration: 0.8 }}
-          >
-            <StoreButtons className="mt-8 justify-center" />
-          </m.div>
+          </p>
+          <StoreButtons className="mt-8 justify-center" />
         </m.div>
 
         {/* Story captions */}

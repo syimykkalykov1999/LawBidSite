@@ -1,6 +1,7 @@
 "use client";
 
 import * as m from "motion/react-m";
+import { REVEAL_OFFSET, revealTransition, revealViewport } from "@/lib/motion";
 import {
   BellRinging,
   CalendarCheck,
@@ -87,17 +88,19 @@ export function Features() {
           />
           <div className="mt-6 space-y-2 text-[13px]">
             <m.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -REVEAL_OFFSET }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 }}
+              viewport={revealViewport}
+              transition={revealTransition(0.2)}
               className="w-fit rounded-2xl rounded-bl-md bg-white/[0.07] px-3 py-2 text-ivory"
             >
               Documents received.
             </m.div>
             <m.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: REVEAL_OFFSET }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.6 }}
+              viewport={revealViewport}
+              transition={revealTransition(0.4)}
               className="ml-auto flex w-fit items-center gap-1 rounded-2xl rounded-br-md bg-gold-400 px-3 py-2 text-ink-950"
             >
               Great! <Checks size={14} weight="bold" />
@@ -138,15 +141,17 @@ export function Features() {
             {["Call with client", "Court hearing", "Send documents"].map((t, i) => (
               <m.div
                 key={t}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: REVEAL_OFFSET }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 + i * 0.15 }}
+                viewport={revealViewport}
+                transition={revealTransition(0.1 + i * 0.08)}
                 className="flex items-center gap-3 rounded-xl border border-white/8 bg-white/[0.03] px-3 py-2 text-sm"
               >
                 <m.span
                   initial={{ backgroundColor: "rgba(0,0,0,0)" }}
                   whileInView={{ backgroundColor: i === 0 ? "#34c38a" : "rgba(0,0,0,0)" }}
-                  transition={{ delay: 0.8 }}
+                  viewport={revealViewport}
+                  transition={revealTransition(0.5)}
                   className="grid h-4 w-4 place-items-center rounded border border-white/25 text-ink-950"
                 >
                   {i === 0 && <Checks size={10} weight="bold" />}
@@ -168,9 +173,10 @@ export function Features() {
             {["SK", "DO", "AH", "+2"].map((a, i) => (
               <m.span
                 key={a}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -REVEAL_OFFSET }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 + i * 0.12 }}
+                viewport={revealViewport}
+                transition={revealTransition(0.1 + i * 0.06)}
                 className={`grid h-12 w-12 place-items-center rounded-full border-2 border-ink-900 text-sm font-semibold ${i === 3 ? "bg-ink-700 text-ivory" : "bg-gradient-to-br from-gold-300 to-gold-600 text-ink-950"}`}
               >
                 {a}
@@ -190,10 +196,10 @@ export function Features() {
             {["New case · Immigration", "New case · Family law", "Your bid was accepted 🎉"].map((n, i) => (
               <m.div
                 key={n}
-                initial={{ opacity: 0, y: -16, scale: 0.96 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 + i * 0.25, type: "spring" }}
+                initial={{ opacity: 0, y: -REVEAL_OFFSET }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={revealViewport}
+                transition={revealTransition(0.15 + i * 0.12)}
                 className={`flex items-center gap-3 rounded-2xl border px-4 py-3 ${i === 2 ? "border-gold-400/40 bg-gold-400/10" : "border-white/10 bg-ink-800"}`}
               >
                 <BellRinging size={16} className="text-gold-300" />

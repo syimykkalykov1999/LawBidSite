@@ -66,14 +66,14 @@ export function Scales({ angle, progress }: Props) {
           style={{ originY: 1 }}
           initial={{ scaleY: 0 }}
           animate={{ scaleY: 1 }}
-          transition={{ duration: 1.4, ease: [0.65, 0, 0.35, 1] }}
+          transition={{ duration: 0.7, ease: [0.65, 0, 0.35, 1] }}
         />
         <m.path
           d="M300 690 Q400 650 500 690 Z M330 662 L470 662 L490 690 L310 690 Z"
           fill="url(#metal)"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
+          transition={{ duration: 0.45, delay: 0.15 }}
         />
         <rect x="280" y="688" width="240" height="14" rx="7" fill="url(#metal)" />
         <rect x="386" y="610" width="28" height="56" rx="6" fill="url(#metal-v)" />
@@ -81,7 +81,7 @@ export function Scales({ angle, progress }: Props) {
         <m.g
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 1.1, type: "spring", stiffness: 160, damping: 12 }}
+          transition={{ delay: 0.55, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
           style={{ originX: "400px", originY: "160px" }}
         >
           <path d="M400 128 L414 158 L400 172 L386 158 Z" fill="url(#metal)" />
@@ -95,7 +95,7 @@ export function Scales({ angle, progress }: Props) {
         style={{ rotate: angle, transformBox: "view-box", transformOrigin: `${PIVOT_X}px ${PIVOT_Y}px` }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.8 }}
+        transition={{ delay: 0.4, duration: 0.4 }}
       >
         <path
           d={`M${PIVOT_X - ARM} 200 Q400 176 ${PIVOT_X + ARM} 200 Q400 188 ${PIVOT_X - ARM} 200 Z`}
@@ -113,9 +113,9 @@ export function Scales({ angle, progress }: Props) {
         <m.g style={{ x: leftX, y: leftY }}>
           <Pan label="Law" />
           <m.g
-            initial={{ opacity: 0, y: -30 }}
+            initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.4, duration: 0.8 }}
+            transition={{ delay: 0.7, duration: 0.4 }}
           >
             <g transform="translate(-34 92) rotate(-6)">
               <rect width="68" height="84" rx="6" fill="#f3efe3" />

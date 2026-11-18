@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { animate, useMotionValue, useTransform } from "motion/react";
 import * as m from "motion/react-m";
+import { REVEAL_OFFSET, revealTransition, revealViewport } from "@/lib/motion";
 import { Check, Crown, UserCircle } from "@phosphor-icons/react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import Link from "next/link";
@@ -64,10 +65,10 @@ export function Pricing({ heading = true }: { heading?: boolean }) {
 
       <div className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-[1fr_1.25fr]">
         <m.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: REVEAL_OFFSET }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          viewport={revealViewport}
+          transition={revealTransition()}
           className="flex flex-col rounded-3xl border border-white/10 bg-white/[0.03] p-8"
         >
           <div className="flex items-center gap-2 text-mist">
@@ -91,10 +92,10 @@ export function Pricing({ heading = true }: { heading?: boolean }) {
         </m.div>
 
         <m.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: REVEAL_OFFSET }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.1 }}
+          viewport={revealViewport}
+          transition={revealTransition(0.06)}
           className="relative flex flex-col overflow-hidden rounded-3xl border border-gold-400/40 bg-gradient-to-b from-navy to-ink-900 p-8 shadow-[0_40px_120px_-40px_rgba(201,162,74,0.45)]"
         >
           <div className="glow-gold absolute -top-40 -right-40 h-96 w-96 opacity-70" />

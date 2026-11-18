@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import * as m from "motion/react-m";
+import { REVEAL_OFFSET, revealTransition, revealViewport } from "@/lib/motion";
 
 export function SpotlightCard({
   className = "",
@@ -16,10 +17,10 @@ export function SpotlightCard({
   return (
     <m.div
       ref={ref}
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: REVEAL_OFFSET }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
+      viewport={revealViewport}
+      transition={revealTransition(delay)}
       onPointerMove={(e) => {
         const el = ref.current;
         if (!el) return;
